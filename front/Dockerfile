@@ -1,34 +1,35 @@
-# Phase de build
-FROM node:lts-alpine as build-stage
+FROM nginx:alpine
+
+# Installer Node.js et npm
+RUN apk add --update nodejs npm
 
 WORKDIR /app
+
+# Copier et installer les dépendances
 COPY package*.json ./
 RUN npm install
 
-ARG MODE=test
+# Copier le reste du code source
 COPY . .
-COPY .env.${MODE} .env
 
-# Exécuter le build et afficher le contenu du répertoire
-RUN npm run build && \
-    echo "Contenu du répertoire après build:" && \
-    ls -la && \
-    echo "Sous-répertoires:" && \
-    ls -la ./build || ls -la ./dist || echo "Aucun répertoire build ou dist trouvé"
+# Construire l'application
+RUN npm run build
 
-# Phase de production
-FROM nginx:stable-alpine as production-stage
+# Déplacer le contenu du build vers le répertoire nginx
+# Cette commande va chercher soit un répertoire build soit un répertoire dist
+RUN if [ -d "build" ]; then \
+      cp -r build/* /usr/share/nginx/html/; \
+    elif [ -d "dist" ]; then \
+      cp -r dist/* /usr/share/nginx/html/; \
+    else \
+      echo "Aucun répertoire build ou dist trouvé" && \
+      mkdir -p /usr/share/nginx/html && \
+      echo "<html><body>Erreur de build</body></html>" > /usr/share/nginx/html/index.html; \
+    fi
 
-# Utiliser "build" au lieu de "dist" (format Create React App)
-COPY --from=build-stage /app/build /usr/share/nginx/html
-
-# Si la ligne ci-dessus échoue, essayez de commenter cette ligne et décommenter la ligne suivante
-# qui recherchera le répertoire de build au moment de l'exécution
-# RUN mkdir -p /usr/share/nginx/html
-
-# Copier le fichier de configuration Nginx
+# Configurer Nginx
 COPY nginx.conf /etc/nginx/conf.d/default.conf
+
 EXPOSE 80
 
-# Script d'entrée pour chercher et copier le répertoire de build au démarrage
 CMD ["nginx", "-g", "daemon off;"]
