@@ -30,9 +30,9 @@ RUN npm run build
 FROM nginx:stable-alpine AS production-stage
 
 # Copier le build de l'étape précédente
-COPY --from=build-stage /app/build /usr/share/nginx/html/
+COPY --from=build-stage /app/build /usr/share/nginx/html
 
-# Copier la configuration Nginx personnalisé
+# Copier la configuration Nginx personnalisée
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Exposer le port
