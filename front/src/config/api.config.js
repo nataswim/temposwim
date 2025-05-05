@@ -5,7 +5,7 @@
  */
 
 // Base API URL - can be configured per environment
-export const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://https://api.temposwim.com';
+export const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://api.temposwim.com';
 
 // API endpoints configuration
 export const API_ENDPOINTS = {

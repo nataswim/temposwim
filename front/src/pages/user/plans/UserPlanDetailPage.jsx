@@ -72,11 +72,11 @@ const UserPlanDetailPage = () => {
         await Promise.all(workoutsData.map(async (workout) => {
           try {
             // Récupérer les séries de natation
-            const swimSetsResponse = await axios.get(`http://https://api.temposwim.com/api/workouts/${workout.id}/swim-sets`);
+            const swimSetsResponse = await axios.get(`https://api.temposwim.com/api/workouts/${workout.id}/swim-sets`);
             const swimSets = swimSetsResponse.data || [];
             
             // Récupérer les exercices
-            const exercisesResponse = await axios.get(`http://https://api.temposwim.com/api/workouts/${workout.id}/exercises`);
+            const exercisesResponse = await axios.get(`https://api.temposwim.com/api/workouts/${workout.id}/exercises`);
             const exercises = exercisesResponse.data || [];
             
             // Calculer la distance totale
@@ -123,7 +123,7 @@ const UserPlanDetailPage = () => {
           // Récupérer les détails basiques pour ces séances
           await Promise.all(otherWorkouts.map(async (workout) => {
             try {
-              const swimSetsResponse = await axios.get(`http://https://api.temposwim.com/api/workouts/${workout.id}/swim-sets`);
+              const swimSetsResponse = await axios.get(`https://api.temposwim.com/api/workouts/${workout.id}/swim-sets`);
               const swimSets = swimSetsResponse.data || [];
               
               const totalDistance = swimSets.reduce((total, set) => {

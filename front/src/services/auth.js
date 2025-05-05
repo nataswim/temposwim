@@ -2,7 +2,7 @@ import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
 
 
-const API_URL = 'http://https://api.temposwim.com/api'; // API
+const API_URL = 'https://api.temposwim.com/api'; // API
 
 const AuthService = {
   setAuthToken: (token) => {

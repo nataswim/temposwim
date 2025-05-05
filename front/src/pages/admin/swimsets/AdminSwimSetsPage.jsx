@@ -28,7 +28,7 @@ const AdminSwimSetsPage = () => {
       const token = localStorage.getItem('token') || sessionStorage.getItem('token');
       
       // Appel direct sans passer par le service api.js
-      const response = await axios.get('http://https://api.temposwim.com/api/swim-sets', {
+      const response = await axios.get('https://api.temposwim.com/api/swim-sets', {
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json',
@@ -174,7 +174,7 @@ const AdminSwimSetsPage = () => {
                               if (window.confirm('Êtes-vous sûr de vouloir supprimer cette série ?')) {
                                 // Appel direct sans passer par le service api.js
                                 const token = localStorage.getItem('token') || sessionStorage.getItem('token');
-                                axios.delete(`http://https://api.temposwim.com/api/swim-sets/${set.id}`, {
+                                axios.delete(`https://api.temposwim.com/api/swim-sets/${set.id}`, {
                                   headers: {
                                     'Content-Type': 'application/json',
                                     'Accept': 'application/json',

@@ -34,7 +34,7 @@ const AuthTestComponent = () => {
       }
       
       // Tester l'authentification avec l'API
-      const response = await axios.get('http://https://api.temposwim.com/api/me', {
+      const response = await axios.get('https://api.temposwim.com/api/me', {
         headers: {
           'Authorization': `Bearer ${token}`
         }
