@@ -19,11 +19,8 @@ FROM nginx:stable-alpine as production-stage
 # IMPORTANT: Utiliser "build" et non "dist" pour Create React App
 COPY --from=build-stage /app/build /usr/share/nginx/html/
 
-# Utiliser RUN pour gérer la condition au lieu de COPY avec OR
-RUN if [ -f "/app/nginx.conf" ]; then \
-    cp /app/nginx.conf /etc/nginx/conf.d/default.conf; \
-    else echo "nginx.conf not found, using default"; \
-    fi
+# Copier nginx.conf s'il existe
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
