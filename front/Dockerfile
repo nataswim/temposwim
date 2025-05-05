@@ -1,35 +1,29 @@
-FROM nginx:alpine
-
-# Installer Node.js et npm
-RUN apk add --update nodejs npm
+# Phase de build
+FROM node:lts-alpine as build-stage
 
 WORKDIR /app
-
-# Copier et installer les dépendances
 COPY package*.json ./
 RUN npm install
 
-# Copier le reste du code source
-COPY . .
+ARG MODE=test
+COPY . ./
+# Utiliser une instruction RUN au lieu de COPY avec OR
+RUN if [ -f ".env.${MODE}" ]; then cp .env.${MODE} .env; else echo "No .env.${MODE} file found"; fi
 
-# Construire l'application
+# Build l'application - Create React App génère un dossier "build"
 RUN npm run build
 
-# Déplacer le contenu du build vers le répertoire nginx
-# Cette commande va chercher soit un répertoire build soit un répertoire dist
-RUN if [ -d "build" ]; then \
-      cp -r build/* /usr/share/nginx/html/; \
-    elif [ -d "dist" ]; then \
-      cp -r dist/* /usr/share/nginx/html/; \
-    else \
-      echo "Aucun répertoire build ou dist trouvé" && \
-      mkdir -p /usr/share/nginx/html && \
-      echo "<html><body>Erreur de build</body></html>" > /usr/share/nginx/html/index.html; \
+# Phase de production
+FROM nginx:stable-alpine as production-stage
+
+# IMPORTANT: Utiliser "build" et non "dist" pour Create React App
+COPY --from=build-stage /app/build /usr/share/nginx/html/
+
+# Utiliser RUN pour gérer la condition au lieu de COPY avec OR
+RUN if [ -f "/app/nginx.conf" ]; then \
+    cp /app/nginx.conf /etc/nginx/conf.d/default.conf; \
+    else echo "nginx.conf not found, using default"; \
     fi
 
-# Configurer Nginx
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-
 EXPOSE 80
-
 CMD ["nginx", "-g", "daemon off;"]
