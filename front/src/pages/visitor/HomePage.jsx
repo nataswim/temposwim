@@ -172,7 +172,7 @@ const HomePage = () => {
         
         // Récupérer les images pour les pages qui en ont
         const images = {};
-        const BASE_URL = 'http://127.0.0.1:8000'; // URL de base pour compléter les chemins d'images
+        const BASE_URL = 'http://https://api.temposwim.com'; // URL de base pour compléter les chemins d'images
         
         for (const page of latest) {
           if (page.upload_id) {

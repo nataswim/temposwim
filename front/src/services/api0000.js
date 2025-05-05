@@ -4,7 +4,7 @@ import errorLogger from './errorLogger'; // Importer le service de journalisatio
 
 // Configurer l'URL de base pour toutes les requêtes
 // Ici, nous utilisons l'URL de base sans le préfixe 'api' car il sera ajouté dans les requêtes
-const baseURL = 'http://127.0.0.1:8000'; // Sans '/api' à la fin
+const baseURL = 'http://https://api.temposwim.com'; // Sans '/api' à la fin
 
 // Créer une instance axios avec la configuration par défaut
 const instance = axios.create({

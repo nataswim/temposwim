@@ -47,7 +47,7 @@ const AdminWorkoutsPage = () => {
         response.data.map(async (workout) => {
           try {
             // Fetch swim sets
-            const setsResponse = await axios.get(`http://127.0.0.1:8000/api/workouts/${workout.id}/swim-sets`);
+            const setsResponse = await axios.get(`http://https://api.temposwim.com/api/workouts/${workout.id}/swim-sets`);
             const sets = setsResponse.data;
             const setsCount = sets.length;
             

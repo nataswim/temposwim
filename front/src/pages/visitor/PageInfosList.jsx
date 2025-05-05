@@ -136,8 +136,8 @@ const PageInfosList = () => {
       try {
         setLoading(true);
         
-        const API_URL = 'http://127.0.0.1:8000/api';
-        const BASE_URL = 'http://127.0.0.1:8000';
+        const API_URL = 'http://https://api.temposwim.com/api';
+        const BASE_URL = 'http://https://api.temposwim.com';
         
         const response = await axios.get(`${API_URL}/pages`);
         

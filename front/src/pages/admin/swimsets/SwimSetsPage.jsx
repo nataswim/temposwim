@@ -43,7 +43,7 @@ const SwimSetsPage = () => {
         };
         
         // 1. Récupérer les détails de la série
-        const swimSetResponse = await axios.get(`http://127.0.0.1:8000/api/swim-sets/${id}`, {
+        const swimSetResponse = await axios.get(`http://https://api.temposwim.com/api/swim-sets/${id}`, {
           headers,
           withCredentials: true
         });
@@ -53,7 +53,7 @@ const SwimSetsPage = () => {
         
         // 2. Récupérer les détails de la séance associée
         if (swimSetData.workout_id) {
-          const workoutResponse = await axios.get(`http://127.0.0.1:8000/api/workouts/${swimSetData.workout_id}`, {
+          const workoutResponse = await axios.get(`http://https://api.temposwim.com/api/workouts/${swimSetData.workout_id}`, {
             headers,
             withCredentials: true
           });
@@ -62,7 +62,7 @@ const SwimSetsPage = () => {
         
         // 3. Récupérer les détails de l'exercice associé
         if (swimSetData.exercise_id) {
-          const exerciseResponse = await axios.get(`http://127.0.0.1:8000/api/exercises/${swimSetData.exercise_id}`, {
+          const exerciseResponse = await axios.get(`http://https://api.temposwim.com/api/exercises/${swimSetData.exercise_id}`, {
             headers,
             withCredentials: true
           });

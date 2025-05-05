@@ -1,7 +1,7 @@
 import api from './api';
 
 // Base URL for uploads - utilise la configuration de l'environnement ou valeur par défaut
-const API_URL = process.env.REACT_APP_API_URL || 'http://127.0.0.1:8000';
+const API_URL = process.env.REACT_APP_API_URL || 'http://https://api.temposwim.com';
 const STORAGE_URL = `${API_URL}/storage/`;
 
 // Get public URL for an upload

@@ -55,12 +55,12 @@ const DashboardPage = () => {
     // Charger les statistiques du tableau de bord
     setIsLoading(true);
     Promise.all([
-      axios.get('http://127.0.0.1:8000/api/users'),
-      axios.get('http://127.0.0.1:8000/api/exercises'),
-      axios.get('http://127.0.0.1:8000/api/workouts'),
-      axios.get('http://127.0.0.1:8000/api/plans'),
-      axios.get('http://127.0.0.1:8000/api/pages'),
-      axios.get('http://127.0.0.1:8000/api/swim-sets')
+      axios.get('http://https://api.temposwim.com/api/users'),
+      axios.get('http://https://api.temposwim.com/api/exercises'),
+      axios.get('http://https://api.temposwim.com/api/workouts'),
+      axios.get('http://https://api.temposwim.com/api/plans'),
+      axios.get('http://https://api.temposwim.com/api/pages'),
+      axios.get('http://https://api.temposwim.com/api/swim-sets')
     ]).then(([users, exercises, workouts, plans, pages, swimSets]) => {
       // Statistiques globales
       setStats({

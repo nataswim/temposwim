@@ -120,14 +120,14 @@ const PlanFormPage = () => {
         
         // Fetch all workouts
         setWorkoutsLoading(true);
-        const workoutsResponse = await axios.get('http://127.0.0.1:8000/api/workouts');
+        const workoutsResponse = await axios.get('http://https://api.temposwim.com/api/workouts');
         
         // Enrich workouts with additional data
         const workoutsWithStats = await Promise.all(
           workoutsResponse.data.map(async (workout) => {
             try {
               // Get swim sets for the workout to calculate stats
-              const setsResponse = await axios.get(`http://127.0.0.1:8000/api/workouts/${workout.id}/swim-sets`);
+              const setsResponse = await axios.get(`http://https://api.temposwim.com/api/workouts/${workout.id}/swim-sets`);
               const sets = setsResponse.data || [];
               
               // Calculate total distance

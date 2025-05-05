@@ -17,7 +17,7 @@ const LOG_LEVELS = {
     // Activer/désactiver l'envoi des erreurs au serveur
     serverLogging: process.env.NODE_ENV === 'production',
     // URL de l'API de journalisation (à configurer selon votre backend)
-    loggingEndpoint: 'http://127.0.0.1:8000/api/logs',
+    loggingEndpoint: 'http://https://api.temposwim.com/api/logs',
     // Niveau minimum de journalisation
     minimumLevel: LOG_LEVELS.ERROR
   };
