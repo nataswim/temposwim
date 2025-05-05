@@ -5,18 +5,18 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 /**
- * 🇬🇧 Migration to create the "mylist" table.
- * 🇫🇷 Migration pour créer la table "mylist".
+ * 🇬🇧 Migration to create the "mylists" table.
+ * 🇫🇷 Migration pour créer la table "mylists".
  */
 return new class extends Migration
 {
     /**
-     * 🇬🇧 Run the migrations.
-     * 🇫🇷 Exécuter la migration.
+     * 🇬🇧 Run the migrations
+     * 🇫🇷 Exécuter la migration
      */
     public function up(): void
     {
-        Schema::create('mylist', function (Blueprint $table) {
+        Schema::create('mylists', function (Blueprint $table) {
             // 🇬🇧 Primary key (auto-increment).
             // 🇫🇷 Clé primaire (auto-incrémentée).
             $table->bigIncrements('id');
@@ -45,6 +45,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('mylist');
+        Schema::dropIfExists('mylists');
     }
 };

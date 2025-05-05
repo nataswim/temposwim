@@ -11,8 +11,8 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * 🇬🇧 Run the migrations.
-     * 🇫🇷 Exécuter la migration.
+     * 🇬🇧 Run the migrations
+     * 🇫🇷 Exécuter la migration
      */
     public function up(): void
     {
@@ -23,7 +23,7 @@ return new class extends Migration
 
             // 🇬🇧 Foreign key referencing "mylist" table.
             // 🇫🇷 Clé étrangère faisant référence à la table "mylist".
-            $table->foreignId('mylist_id')->constrained('mylist')->onDelete('cascade');
+            $table->foreignId('mylist_id')->constrained('mylists')->onDelete('cascade');
 
             // 🇬🇧 Polymorphic relationship: ID of the associated item.
             // 🇫🇷 Relation polymorphique : ID de l'élément associé.

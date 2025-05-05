@@ -16,11 +16,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            // 🇬🇧 Remove the "old_name" column.
-            // 🇫🇷 Supprimer la colonne "old_name".
-            $table->dropColumn('old_name');
-        });
+        // Vérifier si la colonne existe avant de la supprimer
+        if (Schema::hasColumn('users', 'old_name')) {
+            Schema::table('users', function (Blueprint $table) {
+                // 🇬🇧 Remove the "old_name" column.
+                // 🇫🇷 Supprimer la colonne "old_name".
+                $table->dropColumn('old_name');
+            });
+        }
     }
 
     /**
@@ -29,10 +32,13 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            // 🇬🇧 Restore the "old_name" column (nullable).
-            // 🇫🇷 Restaurer la colonne "old_name" (nullable).
-            $table->string('old_name')->nullable();
-        });
+        // Vérifier si la colonne n'existe pas avant de l'ajouter
+        if (!Schema::hasColumn('users', 'old_name')) {
+            Schema::table('users', function (Blueprint $table) {
+                // 🇬🇧 Restore the "old_name" column (nullable).
+                // 🇫🇷 Restaurer la colonne "old_name" (nullable).
+                $table->string('old_name')->nullable();
+            });
+        }
     }
 };
