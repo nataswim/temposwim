@@ -30,6 +30,7 @@ RUN npm run build
 FROM nginx:stable-alpine AS production-stage
 
 # Copier le build généré dans le répertoire public de Nginx
+# CORRECTION : Utiliser /app/build au lieu de /app/dist
 COPY --from=build-stage /app/build /usr/share/nginx/html
 
 # Copier la configuration personnalisée de Nginx
