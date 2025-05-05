@@ -1,20 +1,30 @@
 services:
-  laravel-docker:
-    container_name: laravel-docker
+  laravel-app:
+    container_name: temposwim-laravel
     build: ./back
     ports:
       - 8000:80
+    depends_on:
+      - mysql_db
 
-  vue-docker:
-    container_name: react-docker
+  react-app:
+    container_name: temposwim-react
     build: ./front
     ports:
-      - 80:80
+      - 3000:80
+    depends_on:
+      - laravel-app
 
   mysql_db:
-    image: mysql:latest
+    image: mysql:8.0
+    container_name: temposwim-mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: laravel
+      MYSQL_DATABASE: temposwim
     ports:
       - 3306:3306
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:
