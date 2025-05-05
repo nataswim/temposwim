@@ -1,3 +1,23 @@
-/.DS_Store
+# Node.js
 node_modules/
-front/node_modules/.cache/
+
+# Laravel
+/vendor
+/.env
+.env.*.local
+.env.*.example
+.phpunit.result.cache
+storage/logs
+storage/framework/cache
+storage/framework/sessions
+storage/framework/views
+public/storage
+.DS_Store
+Thumbs.db
+
+# Général
+.idea/
+*.log
+*.swp
+*.swo
+.vscode/
