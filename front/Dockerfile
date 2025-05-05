@@ -9,7 +9,9 @@ ARG MODE=test
 COPY . .
 COPY .env.${MODE} .env
 
-RUN npm run build && ls -la
+RUN npm run build
+RUN ls -la
+RUN find . -type d | sort
 
 # Phase de production
 FROM nginx:stable-alpine as production-stage
