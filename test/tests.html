@@ -1,0 +1,217 @@
+<p><strong>Liste exhaustive des tests &agrave; mettre en place</strong> pour valider l&rsquo;application&nbsp;en fonction des objectifs mentionn&eacute;s (fonctionnalit&eacute;, performance, s&eacute;curit&eacute;, qualit&eacute; du code, base de donn&eacute;es).</p>
+<h2><strong>1. Tests Fonctionnels</strong></h2>
+<h3><strong>1.1 Authentification</strong></h3>
+<ul>
+<li>
+<p>Test de l'inscription avec donn&eacute;es valides/invalides</p>
+</li>
+<li>
+<p>Test de la connexion avec JWT (valide/invalide/expir&eacute;)</p>
+</li>
+<li>
+<p>Test du rafra&icirc;chissement de token si mis en place</p>
+</li>
+<li>
+<p>Test de la d&eacute;connexion</p>
+</li>
+<li>
+<p>Acc&egrave;s interdit &agrave; une route prot&eacute;g&eacute;e sans token</p>
+</li>
+</ul>
+<h3><strong>1.2 Navigation et Affichage</strong></h3>
+<ul>
+<li>
+<p>Affichage correct des pages : accueil, dashboard, s&eacute;ances, plans, exercices</p>
+</li>
+<li>
+<p>Navigation entre pages (React Router)</p>
+</li>
+<li>
+<p>Barre de recherche fonctionnelle (avec filtre)</p>
+</li>
+<li>
+<p>Pagination (si existante)</p>
+</li>
+</ul>
+<h3><strong>1.3 Gestion des donn&eacute;es utilisateurs</strong></h3>
+<ul>
+<li>
+<p>Affichage des s&eacute;ances/exercices/plans</p>
+</li>
+<li>
+<p>Ajout d&rsquo;un &eacute;l&eacute;ment &agrave; une liste personnelle (mylists)</p>
+</li>
+<li>
+<p>Suppression/modification d&rsquo;un &eacute;l&eacute;ment de liste</p>
+</li>
+<li>
+<p>Cr&eacute;ation de listes personnelles</p>
+</li>
+<li>
+<p>Affichage d'une liste et des items li&eacute;s</p>
+</li>
+</ul>
+<h3><strong>1.4 API RESTful (Backend Laravel)</strong></h3>
+<ul>
+<li>
+<p>CRUD complet pour chaque entit&eacute; (users, plans, workouts, exercises, swim_sets)</p>
+</li>
+<li>
+<p>V&eacute;rification des relations : ex. ajout d&rsquo;un exercice &agrave; une s&eacute;ance</p>
+</li>
+<li>
+<p>Contr&ocirc;le des permissions selon les r&ocirc;les (<code>roles</code> table)</p>
+</li>
+<li>
+<p>V&eacute;rification des r&eacute;ponses HTTP (200, 401, 404, 422&hellip;)</p>
+</li>
+</ul>
+<hr/>
+<h2><strong>2. Tests de Performance</strong></h2>
+<h3><strong>2.1 Frontend</strong></h3>
+<ul>
+<li>
+<p>Temps de chargement initial (First Paint, Time to Interactive)</p>
+</li>
+<li>
+<p>R&eacute;activit&eacute; lors de l&rsquo;ajout/suppression d&rsquo;&eacute;l&eacute;ments</p>
+</li>
+<li>
+<p>Comportement sur mobile/tablette (Responsive)</p>
+</li>
+</ul>
+<h3><strong>2.2 Backend</strong></h3>
+<ul>
+<li>
+<p>Temps de r&eacute;ponse des endpoints critiques</p>
+</li>
+<li>
+<p>Gestion de la charge (stress test avec 50-100 utilisateurs simultan&eacute;s)</p>
+</li>
+<li>
+<p>Profilage des requ&ecirc;tes MySQL (requ&ecirc;tes lentes)</p>
+</li>
+</ul>
+<hr/>
+<h2><strong>3. Tests de S&eacute;curit&eacute;</strong></h2>
+<h3><strong>3.1 Authentification</strong></h3>
+<ul>
+<li>
+<p>JWT stock&eacute; de mani&egrave;re s&eacute;curis&eacute;e (localStorage ou cookie httpOnly)</p>
+</li>
+<li>
+<p>V&eacute;rification de l&rsquo;expiration des tokens</p>
+</li>
+<li>
+<p>Acc&egrave;s non autoris&eacute; bloqu&eacute;</p>
+</li>
+</ul>
+<h3><strong>3.2 Vuln&eacute;rabilit&eacute;s classiques</strong></h3>
+<ul>
+<li>
+<p>Injection SQL (via champs de recherche ou formulaire)</p>
+</li>
+<li>
+<p>XSS (Cross-Site Scripting) dans les inputs utilisateurs</p>
+</li>
+<li>
+<p>CSRF (si cookie utilis&eacute; pour JWT)</p>
+</li>
+</ul>
+<h3><strong>3.3 API</strong></h3>
+<ul>
+<li>
+<p>Endpoint prot&eacute;g&eacute; mal configur&eacute; (acc&egrave;s public &agrave; <code>/api/users</code>, etc.)</p>
+</li>
+<li>
+<p>Test de modification de ressources sans permission (ex. PUT un autre utilisateur)</p>
+</li>
+</ul>
+<hr/>
+<h2><strong>4. Tests de Qualit&eacute; du Code</strong></h2>
+<h3><strong>4.1 Frontend (React)</strong></h3>
+<ul>
+<li>
+<p>Composants fonctionnels bien structur&eacute;s</p>
+</li>
+<li>
+<p>Props valid&eacute;es (PropTypes ou TypeScript si utilis&eacute;)</p>
+</li>
+<li>
+<p>S&eacute;paration logique UI/State/Services</p>
+</li>
+<li>
+<p>Utilisation correcte des hooks (<code>useEffect</code>, <code>useState</code>&hellip;)</p>
+</li>
+</ul>
+<h3><strong>4.2 Backend (Laravel)</strong></h3>
+<ul>
+<li>
+<p>Routes bien d&eacute;finies et prot&eacute;g&eacute;es (middlewares)</p>
+</li>
+<li>
+<p>Services/Controllers bien s&eacute;par&eacute;s</p>
+</li>
+<li>
+<p>Utilisation des Eloquent relationships</p>
+</li>
+<li>
+<p>Validation c&ocirc;t&eacute; backend</p>
+</li>
+</ul>
+<hr/>
+<h2><strong>5. Tests Base de Donn&eacute;es</strong></h2>
+<ul>
+<li>
+<p>Int&eacute;grit&eacute; r&eacute;f&eacute;rentielle (via foreign keys)</p>
+</li>
+<li>
+<p>Coh&eacute;rence des relations entre entit&eacute;s (ex. <code>plan_workouts</code>, <code>workout_exercises</code>)</p>
+</li>
+<li>
+<p>Donn&eacute;es de test coh&eacute;rentes et repr&eacute;sentatives</p>
+</li>
+<li>
+<p>Requ&ecirc;tes optimis&eacute;es (&eacute;viter les N+1 queries)</p>
+</li>
+</ul>
+<hr/>
+<h2><strong>6. Tests E2E (End to End)</strong></h2>
+<ul>
+<li>
+<p>Utiliser <strong>Cypress</strong> ou <strong>Playwright</strong> pour simuler un parcours complet :</p>
+<ul>
+<li>
+<p>Connexion</p>
+</li>
+<li>
+<p>Recherche d&rsquo;un exercice</p>
+</li>
+<li>
+<p>Ajout &agrave; une s&eacute;ance</p>
+</li>
+<li>
+<p>Ajout de la s&eacute;ance &agrave; un plan</p>
+</li>
+<li>
+<p>Enregistrement dans une liste personnelle</p>
+</li>
+</ul>
+</li>
+</ul>
+<hr/>
+<h2><strong>Recommandations de Structuration</strong></h2>
+<ul>
+<li>
+<p><strong>Frontend</strong> : utiliser <strong>Jest + React Testing Library</strong></p>
+</li>
+<li>
+<p><strong>Backend</strong> : utiliser <strong>PHPUnit</strong> (Laravel int&eacute;gr&eacute;)</p>
+</li>
+<li>
+<p><strong>API</strong> : Postman/Newman pour automatisation ou <strong>Laravel HTTP Tests</strong></p>
+</li>
+<li>
+<p><strong>E2E</strong> : Cypress conseill&eacute; pour simulation utilisateur compl&egrave;te</p>
+</li>
+</ul>

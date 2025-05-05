@@ -1,0 +1,1326 @@
+{
+    "info": {
+        "_postman_id": "67bc3b5fa8a36",
+        "name": "APP_NS_V1",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "Exercises",
+            "item": [
+                {
+                    "name": "api\/exercises",
+                    "request": {
+                        "method": "GET|HEAD",
+                        "header": [],
+                        "url": {
+                            "raw": "http:\/\/localhost:8000\/api\/exercises",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "api",
+                                "exercises"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api\/exercises",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                            "raw": "http:\/\/localhost:8000\/api\/exercises",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "api",
+                                "exercises"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api\/exercises\/{exercise}",
+                    "request": {
+                        "method": "GET|HEAD",
+                        "header": [],
+                        "url": {
+                            "raw": "http:\/\/localhost:8000\/api\/exercises\/{exercise}",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "api",
+                                "exercises",
+                                "{exercise}"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api\/exercises\/{exercise}",
+                    "request": {
+                        "method": "PUT|PATCH",
+                        "header": [],
+                        "url": {
+                            "raw": "http:\/\/localhost:8000\/api\/exercises\/{exercise}",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "api",
+                                "exercises",
+                                "{exercise}"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api\/exercises\/{exercise}",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "http:\/\/localhost:8000\/api\/exercises\/{exercise}",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "api",
+                                "exercises",
+                                "{exercise}"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Mylist",
+            "item": [
+                {
+                    "name": "api\/mylist\/{mylist}\/items",
+                    "request": {
+                        "method": "GET|HEAD",
+                        "header": [],
+                        "url": {
+                            "raw": "http:\/\/localhost:8000\/api\/mylist\/{mylist}\/items",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "api",
+                                "mylist",
+                                "{mylist}",
+                                "items"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api\/mylist\/{mylist}\/items",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                            "raw": "http:\/\/localhost:8000\/api\/mylist\/{mylist}\/items",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "api",
+                                "mylist",
+                                "{mylist}",
+                                "items"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api\/mylist\/{mylist}\/items\/{item}",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "http:\/\/localhost:8000\/api\/mylist\/{mylist}\/items\/{item}",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "api",
+                                "mylist",
+                                "{mylist}",
+                                "items",
+                                "{item}"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Mylists",
+            "item": [
+                {
+                    "name": "api\/mylists",
+                    "request": {
+                        "method": "GET|HEAD",
+                        "header": [],
+                        "url": {
+                            "raw": "http:\/\/localhost:8000\/api\/mylists",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "api",
+                                "mylists"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api\/mylists",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                            "raw": "http:\/\/localhost:8000\/api\/mylists",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "api",
+                                "mylists"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api\/mylists\/{mylist}",
+                    "request": {
+                        "method": "GET|HEAD",
+                        "header": [],
+                        "url": {
+                            "raw": "http:\/\/localhost:8000\/api\/mylists\/{mylist}",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "api",
+                                "mylists",
+                                "{mylist}"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api\/mylists\/{mylist}",
+                    "request": {
+                        "method": "PUT|PATCH",
+                        "header": [],
+                        "url": {
+                            "raw": "http:\/\/localhost:8000\/api\/mylists\/{mylist}",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "api",
+                                "mylists",
+                                "{mylist}"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api\/mylists\/{mylist}",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "http:\/\/localhost:8000\/api\/mylists\/{mylist}",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "api",
+                                "mylists",
+                                "{mylist}"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Pages",
+            "item": [
+                {
+                    "name": "api\/pages",
+                    "request": {
+                        "method": "GET|HEAD",
+                        "header": [],
+                        "url": {
+                            "raw": "http:\/\/localhost:8000\/api\/pages",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "api",
+                                "pages"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api\/pages",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                            "raw": "http:\/\/localhost:8000\/api\/pages",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "api",
+                                "pages"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api\/pages\/{page}",
+                    "request": {
+                        "method": "GET|HEAD",
+                        "header": [],
+                        "url": {
+                            "raw": "http:\/\/localhost:8000\/api\/pages\/{page}",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "api",
+                                "pages",
+                                "{page}"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api\/pages\/{page}",
+                    "request": {
+                        "method": "PUT|PATCH",
+                        "header": [],
+                        "url": {
+                            "raw": "http:\/\/localhost:8000\/api\/pages\/{page}",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "api",
+                                "pages",
+                                "{page}"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api\/pages\/{page}",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "http:\/\/localhost:8000\/api\/pages\/{page}",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "api",
+                                "pages",
+                                "{page}"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Plans",
+            "item": [
+                {
+                    "name": "api\/plans",
+                    "request": {
+                        "method": "GET|HEAD",
+                        "header": [],
+                        "url": {
+                            "raw": "http:\/\/localhost:8000\/api\/plans",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "api",
+                                "plans"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api\/plans",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                            "raw": "http:\/\/localhost:8000\/api\/plans",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "api",
+                                "plans"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api\/plans\/{plan}",
+                    "request": {
+                        "method": "GET|HEAD",
+                        "header": [],
+                        "url": {
+                            "raw": "http:\/\/localhost:8000\/api\/plans\/{plan}",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "api",
+                                "plans",
+                                "{plan}"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api\/plans\/{plan}",
+                    "request": {
+                        "method": "PUT|PATCH",
+                        "header": [],
+                        "url": {
+                            "raw": "http:\/\/localhost:8000\/api\/plans\/{plan}",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "api",
+                                "plans",
+                                "{plan}"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api\/plans\/{plan}",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "http:\/\/localhost:8000\/api\/plans\/{plan}",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "api",
+                                "plans",
+                                "{plan}"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api\/plans\/{plan}\/workouts",
+                    "request": {
+                        "method": "GET|HEAD",
+                        "header": [],
+                        "url": {
+                            "raw": "http:\/\/localhost:8000\/api\/plans\/{plan}\/workouts",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "api",
+                                "plans",
+                                "{plan}",
+                                "workouts"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api\/plans\/{plan}\/workouts\/{workout}",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                            "raw": "http:\/\/localhost:8000\/api\/plans\/{plan}\/workouts\/{workout}",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "api",
+                                "plans",
+                                "{plan}",
+                                "workouts",
+                                "{workout}"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api\/plans\/{plan}\/workouts\/{workout}",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "http:\/\/localhost:8000\/api\/plans\/{plan}\/workouts\/{workout}",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "api",
+                                "plans",
+                                "{plan}",
+                                "workouts",
+                                "{workout}"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Roles",
+            "item": [
+                {
+                    "name": "api\/roles",
+                    "request": {
+                        "method": "GET|HEAD",
+                        "header": [],
+                        "url": {
+                            "raw": "http:\/\/localhost:8000\/api\/roles",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "api",
+                                "roles"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api\/roles",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                            "raw": "http:\/\/localhost:8000\/api\/roles",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "api",
+                                "roles"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api\/roles\/{role}",
+                    "request": {
+                        "method": "GET|HEAD",
+                        "header": [],
+                        "url": {
+                            "raw": "http:\/\/localhost:8000\/api\/roles\/{role}",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "api",
+                                "roles",
+                                "{role}"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api\/roles\/{role}",
+                    "request": {
+                        "method": "PUT|PATCH",
+                        "header": [],
+                        "url": {
+                            "raw": "http:\/\/localhost:8000\/api\/roles\/{role}",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "api",
+                                "roles",
+                                "{role}"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api\/roles\/{role}",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "http:\/\/localhost:8000\/api\/roles\/{role}",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "api",
+                                "roles",
+                                "{role}"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api\/roles\/{role}\/users",
+                    "request": {
+                        "method": "GET|HEAD",
+                        "header": [],
+                        "url": {
+                            "raw": "http:\/\/localhost:8000\/api\/roles\/{role}\/users",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "api",
+                                "roles",
+                                "{role}",
+                                "users"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Swim-sets",
+            "item": [
+                {
+                    "name": "api\/swim-sets",
+                    "request": {
+                        "method": "GET|HEAD",
+                        "header": [],
+                        "url": {
+                            "raw": "http:\/\/localhost:8000\/api\/swim-sets",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "api",
+                                "swim-sets"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api\/swim-sets",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                            "raw": "http:\/\/localhost:8000\/api\/swim-sets",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "api",
+                                "swim-sets"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api\/swim-sets\/{swim_set}",
+                    "request": {
+                        "method": "GET|HEAD",
+                        "header": [],
+                        "url": {
+                            "raw": "http:\/\/localhost:8000\/api\/swim-sets\/{swim_set}",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "api",
+                                "swim-sets",
+                                "{swim_set}"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api\/swim-sets\/{swim_set}",
+                    "request": {
+                        "method": "PUT|PATCH",
+                        "header": [],
+                        "url": {
+                            "raw": "http:\/\/localhost:8000\/api\/swim-sets\/{swim_set}",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "api",
+                                "swim-sets",
+                                "{swim_set}"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api\/swim-sets\/{swim_set}",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "http:\/\/localhost:8000\/api\/swim-sets\/{swim_set}",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "api",
+                                "swim-sets",
+                                "{swim_set}"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Uploads",
+            "item": [
+                {
+                    "name": "api\/uploads",
+                    "request": {
+                        "method": "GET|HEAD",
+                        "header": [],
+                        "url": {
+                            "raw": "http:\/\/localhost:8000\/api\/uploads",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "api",
+                                "uploads"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api\/uploads",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                            "raw": "http:\/\/localhost:8000\/api\/uploads",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "api",
+                                "uploads"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api\/uploads\/{upload}",
+                    "request": {
+                        "method": "GET|HEAD",
+                        "header": [],
+                        "url": {
+                            "raw": "http:\/\/localhost:8000\/api\/uploads\/{upload}",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "api",
+                                "uploads",
+                                "{upload}"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api\/uploads\/{upload}",
+                    "request": {
+                        "method": "PUT|PATCH",
+                        "header": [],
+                        "url": {
+                            "raw": "http:\/\/localhost:8000\/api\/uploads\/{upload}",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "api",
+                                "uploads",
+                                "{upload}"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api\/uploads\/{upload}",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "http:\/\/localhost:8000\/api\/uploads\/{upload}",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "api",
+                                "uploads",
+                                "{upload}"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "User",
+            "item": [
+                {
+                    "name": "api\/user",
+                    "request": {
+                        "method": "GET|HEAD",
+                        "header": [],
+                        "url": {
+                            "raw": "http:\/\/localhost:8000\/api\/user",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "api",
+                                "user"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Users",
+            "item": [
+                {
+                    "name": "api\/users",
+                    "request": {
+                        "method": "GET|HEAD",
+                        "header": [],
+                        "url": {
+                            "raw": "http:\/\/localhost:8000\/api\/users",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "api",
+                                "users"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api\/users",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                            "raw": "http:\/\/localhost:8000\/api\/users",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "api",
+                                "users"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api\/users\/{user}",
+                    "request": {
+                        "method": "GET|HEAD",
+                        "header": [],
+                        "url": {
+                            "raw": "http:\/\/localhost:8000\/api\/users\/{user}",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "api",
+                                "users",
+                                "{user}"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api\/users\/{user}",
+                    "request": {
+                        "method": "PUT|PATCH",
+                        "header": [],
+                        "url": {
+                            "raw": "http:\/\/localhost:8000\/api\/users\/{user}",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "api",
+                                "users",
+                                "{user}"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api\/users\/{user}",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "http:\/\/localhost:8000\/api\/users\/{user}",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "api",
+                                "users",
+                                "{user}"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api\/users\/{user}\/uploads",
+                    "request": {
+                        "method": "GET|HEAD",
+                        "header": [],
+                        "url": {
+                            "raw": "http:\/\/localhost:8000\/api\/users\/{user}\/uploads",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "api",
+                                "users",
+                                "{user}",
+                                "uploads"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Workouts",
+            "item": [
+                {
+                    "name": "api\/workouts",
+                    "request": {
+                        "method": "GET|HEAD",
+                        "header": [],
+                        "url": {
+                            "raw": "http:\/\/localhost:8000\/api\/workouts",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "api",
+                                "workouts"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api\/workouts",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                            "raw": "http:\/\/localhost:8000\/api\/workouts",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "api",
+                                "workouts"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api\/workouts\/{workout}",
+                    "request": {
+                        "method": "GET|HEAD",
+                        "header": [],
+                        "url": {
+                            "raw": "http:\/\/localhost:8000\/api\/workouts\/{workout}",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "api",
+                                "workouts",
+                                "{workout}"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api\/workouts\/{workout}",
+                    "request": {
+                        "method": "PUT|PATCH",
+                        "header": [],
+                        "url": {
+                            "raw": "http:\/\/localhost:8000\/api\/workouts\/{workout}",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "api",
+                                "workouts",
+                                "{workout}"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api\/workouts\/{workout}",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "http:\/\/localhost:8000\/api\/workouts\/{workout}",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "api",
+                                "workouts",
+                                "{workout}"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api\/workouts\/{workout}\/exercises",
+                    "request": {
+                        "method": "GET|HEAD",
+                        "header": [],
+                        "url": {
+                            "raw": "http:\/\/localhost:8000\/api\/workouts\/{workout}\/exercises",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "api",
+                                "workouts",
+                                "{workout}",
+                                "exercises"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api\/workouts\/{workout}\/exercises\/{exercise}",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                            "raw": "http:\/\/localhost:8000\/api\/workouts\/{workout}\/exercises\/{exercise}",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "api",
+                                "workouts",
+                                "{workout}",
+                                "exercises",
+                                "{exercise}"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api\/workouts\/{workout}\/exercises\/{exercise}",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "http:\/\/localhost:8000\/api\/workouts\/{workout}\/exercises\/{exercise}",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "api",
+                                "workouts",
+                                "{workout}",
+                                "exercises",
+                                "{exercise}"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api\/workouts\/{workout}\/swim-sets",
+                    "request": {
+                        "method": "GET|HEAD",
+                        "header": [],
+                        "url": {
+                            "raw": "http:\/\/localhost:8000\/api\/workouts\/{workout}\/swim-sets",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "api",
+                                "workouts",
+                                "{workout}",
+                                "swim-sets"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api\/workouts\/{workout}\/swim-sets\/{swimSet}",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                            "raw": "http:\/\/localhost:8000\/api\/workouts\/{workout}\/swim-sets\/{swimSet}",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "api",
+                                "workouts",
+                                "{workout}",
+                                "swim-sets",
+                                "{swimSet}"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api\/workouts\/{workout}\/swim-sets\/{swimSet}",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "http:\/\/localhost:8000\/api\/workouts\/{workout}\/swim-sets\/{swimSet}",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "api",
+                                "workouts",
+                                "{workout}",
+                                "swim-sets",
+                                "{swimSet}"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        }
+    ]
+}

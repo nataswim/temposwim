@@ -1,0 +1,76 @@
+--- /Users/mac/Downloads/APP_NS_V1/dev_projet/sauvegardegit/test/workouts.test.js
+--- Mardi 22 Avril 2025 12H11
+
+  // note dev // email: 'user@user.net',  // admin@admin.net
+      // note dev // password: 'user123'      // admin123
+
+      GO  - npx jest workouts.test.js
+
+
+Tests de Workouts
+
+Ce test couvre toutes les fonctionnalités principales de gestion des séances d'entraînement dans l'application, 
+y compris leurs relations avec les exercices et les séries de natation. 
+Les logs détaillés  aideront à comprendre le fonctionnement de  l'API et à identifier rapidement les problèmes .
+
+Configuration :
+
+Authentification de l'utilisateur
+Préparation des données pré-requises (exercices, séries de natation)
+Nettoyage des données de test
+
+
+Tests CRUD complets:
+
+Création d'une séance d'entraînement
+Récupération de toutes les séances et d'une séance spécifique
+Mise à jour d'une séance
+Suppression d'une séance
+
+
+Tests de relations:
+
+Ajout d'un exercice à une séance
+Ajout d'une série de natation à une séance
+Suppression d'un exercice d'une séance
+Suppression d'une série d'une séance
+Récupération des plans associés à une séance
+
+
+Gestion robuste des erreurs:
+
+Tests conditionnels qui s'adaptent aux échecs précédents
+Logs complets pour faciliter le débogage
+Vérification des réponses 404 pour les ressources inexistantes
+
+
+Lisibilité :
+
+Structure  avec des sections 
+Commentaires bilingues 
+
+
+____________________
+RESULTATS DU TEST 
+____________________
+ PASS  ./workouts.test.js
+  Workouts Management
+    ✓ Can retrieve all workouts (21 ms)
+    ✓ Can create a new workout (32 ms)
+    ✓ Can retrieve a specific workout (14 ms)
+    ✓ Can update a workout (54 ms)
+    ✓ Can add an exercise to a workout (42 ms)
+    ✓ Can add a swim set to a workout (37 ms)
+    ✓ Can remove an exercise from a workout (32 ms)
+    ✓ Can remove a swim set from a workout (36 ms)
+    ✓ Can retrieve plans for a workout (17 ms)
+    ✓ Can delete a workout (94 ms)
+    ✓ Returns 404 for non-existent workout (14 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       11 passed, 11 total
+Snapshots:   0 total
+Time:        1.395 s, estimated 2 s
+Ran all test suites matching /workouts.test.js/i.
+
+

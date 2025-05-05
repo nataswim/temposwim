@@ -1,0 +1,107 @@
+/* Styles pour le layout utilisateur */
+.admin-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-main {
+  flex: 1;
+  background-color: #f5f4f0!important;
+  padding: 1rem;
+}
+
+
+
+/* Ajustements pour le header */
+
+.admin-header {
+  background-color: #484757;
+    border: 20px solid #5bcacb;
+    border-bottom: 20px solid #484757;
+    border-top: 20px solid #484757;
+}
+
+.admin-logo-wrapper {
+  background-color: #FFF;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+.admin-site-title {
+  color: #004f59;
+}
+
+.admin-menu-item {
+  background-color: #ecf0f3;
+  border-radius: 5px;
+  margin: 0 5px;
+}
+
+.admin-profile-btn {
+  background-color: #21cfc6;
+  border-radius: 5px;
+  margin: 0 5px;
+}
+
+.admin-logout-btn {
+  background-color: #b12929;
+  margin: 0 1px;
+  color: #FFF;
+  border-radius: 10%;
+  border: #FFF;
+  padding: 10px 15px; 
+}
+
+/* Ajustements pour la navbar */
+.admin-nav {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,.08);
+}
+
+/* Ajustements pour le footer */
+.admin-footer {
+  background-color: #484757;
+  color: #fff;
+  padding: 1rem 0;
+  margin-top: auto;
+  border-left: 20px solid #21cfc6;
+  border-right: 20px solid #21cfc6;
+  border-bottom: 40px solid #484757;
+  border-top: 40px solid #484757;
+}
+
+.admin-nav-link {
+  background-color: #484757;
+  color: #ffffff;
+  padding: 10px 15px;
+  text-decoration: none;
+  font-size: 130%;
+  margin: 10px;
+  font-weight: bold;
+  border: 0px solid #fff;
+}
+
+.admin-nav-link:hover,
+.admin-nav-link:focus {
+  background-color: #fff;
+  color: #004f59;
+  padding: 10px 15px;
+  text-decoration: none;
+  font-size: 130%;
+  margin: 10px;
+  font-weight: bold;
+  border-radius: 0px 20px 20px 0px;
+  border-left: 10px double #21cfc6;
+}
+
+.admin-nav-link:active{
+    background-color: #e0e0e0;/*Un gris encore plus foncé quand le button est cliqué*/
+    border: none;
+}

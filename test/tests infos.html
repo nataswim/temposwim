@@ -1,0 +1,310 @@
+<p><strong>Commentaires de d&eacute;veloppement (ignor&eacute;s par le moteur de test)</strong></p>
+<div>
+<div>JavaScript</div>
+<div>
+<div>
+<pre><code> // note dev // email: 'user@user.net', // admin@admin.net
+ // note dev // password: 'user123' // admin123
+</code></pre>
+</div>
+</div>
+</div>
+<p>Ce sont des notes pour les d&eacute;veloppeurs. Elles indiquent des exemples d'adresses e-mail et de mots de passe qui pourraient &ecirc;tre utilis&eacute;s pour tester l'API. Le moteur de test Jest ignore ces lignes car elles sont comment&eacute;es avec <code>//</code>.</p>
+<p><strong>2. Importations</strong></p>
+<div>
+<div>JavaScript</div>
+<div>
+<div>
+<pre><code> const { expect } = require('@jest/globals');
+ const axios = require('axios');
+</code></pre>
+</div>
+</div>
+</div>
+<ul>
+<li><code>require('@jest/globals').expect</code>: Importe la fonction <code>expect</code> de la librairie Jest. <code>expect</code> est utilis&eacute;e pour faire des assertions (v&eacute;rifications) sur les r&eacute;sultats des tests.</li>
+<li><code>require('axios')</code>: Importe la librairie <code>axios</code>, un client HTTP bas&eacute; sur les Promises pour effectuer des requ&ecirc;tes vers l'API.</li>
+</ul>
+<p><strong>3. Configuration de base d'Axios</strong></p>
+<div>
+<div>JavaScript</div>
+<div>
+<div>
+<pre><code> const api = axios.create({
+ baseURL: 'http://localhost:8000/api',
+ headers: {
+ Accept: 'application/json'
+ },
+ withCredentials: true
+ });
+</code></pre>
+</div>
+</div>
+</div>
+<ul>
+<li><code>axios.create({...})</code>: Cr&eacute;e une instance d'Axios pr&eacute;configur&eacute;e. Cela permet de centraliser les param&egrave;tres communs pour toutes les requ&ecirc;tes faites avec cette instance <code>api</code>.</li>
+<li><code>baseURL: 'http://localhost:8000/api'</code>: D&eacute;finit l'URL de base de l'API test&eacute;e. Toutes les routes relatives (comme <code>/login</code>, <code>/me</code>, <code>/logout</code>) seront construites en ajoutant leur chemin &agrave; cette URL de base.</li>
+<li><code>headers: { Accept: 'application/json' }</code>: D&eacute;finit les en-t&ecirc;tes HTTP par d&eacute;faut pour toutes les requ&ecirc;tes. Ici, on sp&eacute;cifie que le client s'attend &agrave; recevoir des r&eacute;ponses au format JSON.</li>
+<li><code>withCredentials: true</code>: Indique &agrave; Axios d'inclure les cookies dans les requ&ecirc;tes inter-domaines. C'est souvent n&eacute;cessaire pour g&eacute;rer les sessions d'authentification bas&eacute;es sur les cookies.</li>
+</ul>
+<p><strong>4. Bloc de description des tests d'authentification</strong></p>
+<div>
+<div>JavaScript</div>
+<div>
+<div>
+<pre><code> describe('Authentication', () =&gt; {
+ // ... les tests d'authentification seront d&eacute;finis ici ...
+ });
+</code></pre>
+</div>
+</div>
+</div>
+<ul>
+<li><code>describe('Authentication', () =&gt; { ... })</code>: D&eacute;finit un bloc de tests logiquement regroup&eacute;s sous le th&egrave;me "Authentication". Cela aide &agrave; organiser les r&eacute;sultats des tests et &agrave; les rendre plus lisibles.</li>
+</ul>
+<p><strong>5. Variables de port&eacute;e du bloc <code>describe</code></strong></p>
+<div>
+<div>JavaScript</div>
+<div>
+<div>
+<pre><code> let userData = {};
+ let authToken = null;
+ beforeEach(() =&gt; {
+ userData = {};
+ authToken = null;
+ api.defaults.headers.common['Authorization'] = null;
+ });
+</code></pre>
+</div>
+</div>
+</div>
+<ul>
+<li><code>let userData = {};</code>: D&eacute;clare une variable <code>userData</code> qui sera utilis&eacute;e pour stocker les informations de l'utilisateur apr&egrave;s une connexion r&eacute;ussie. Elle est initialis&eacute;e comme un objet vide.</li>
+<li><code>let authToken = null;</code>: D&eacute;clare une variable <code>authToken</code> qui stockera le token d'authentification (si l'API en utilise un) apr&egrave;s une connexion r&eacute;ussie. Elle est initialis&eacute;e &agrave; <code>null</code>.</li>
+<li><code>beforeEach(() =&gt; { ... })</code>: Cette fonction sera ex&eacute;cut&eacute;e avant chaque test (<code>test(...)</code>) &agrave; l'int&eacute;rieur du bloc <code>describe('Authentication', ...)</code>. Elle permet de r&eacute;initialiser l'&eacute;tat avant chaque test pour garantir l'ind&eacute;pendance des tests :
+<ul>
+<li><code>userData = {};</code>: R&eacute;initialise <code>userData</code> &agrave; un objet vide.</li>
+<li><code>authToken = null;</code>: R&eacute;initialise <code>authToken</code> &agrave; <code>null</code>.</li>
+<li><code>api.defaults.headers.common['Authorization'] = null;</code>: Supprime l'en-t&ecirc;te d'autorisation par d&eacute;faut pour s'assurer que chaque test d'acc&egrave;s prot&eacute;g&eacute; commence sans token.</li>
+</ul>
+</li>
+</ul>
+<p><strong>6. Test de connexion utilisateur r&eacute;ussie</strong></p>
+<div>
+<div>JavaScript</div>
+<div>
+<div>
+<pre><code> test('User can login with valid credentials', async () =&gt; {
+ const response = await api.post('/login', {
+ email: 'user@user.net',
+ password: 'user123'
+ });
+ // Afficher la structure de la r&eacute;ponse
+ console.log('Login Response Structure:', JSON.stringify(response.data, null, 2));
+ // V&eacute;rifier connexion r&eacute;ussi
+ expect(response.status).toBe(200);
+ expect(response.data).toBeDefined();
+ expect(response.data.status).toBe('success');
+ // V&eacute;rifier donn&eacute;es user
+ if (response.data.user) {
+ userData = response.data.user;
+ expect(userData.email).toBe('user@user.net');
+ }
+ // Capturer token
+ if (response.data.authorisation &amp;&amp; response.data.authorisation.token) {
+ authToken = response.data.authorisation.token;
+ expect(authToken).toBeDefined();
+ }
+ });
+</code></pre>
+</div>
+</div>
+</div>
+<ul>
+<li><code>test('User can login with valid credentials', async () =&gt; { ... })</code>: D&eacute;finit un test asynchrone qui v&eacute;rifie si un utilisateur peut se connecter avec des informations d'identification valides. <code>async</code> indique que la fonction peut contenir des op&eacute;rations asynchrones (comme les requ&ecirc;tes HTTP).</li>
+<li><code>const response = await api.post('/login', { email: 'user@user.net', password: 'user123' });</code>: Envoie une requ&ecirc;te POST &agrave; l'endpoint <code>/login</code> de l'API avec l'e-mail et le mot de passe de l'utilisateur. <code>await</code> attend la r&eacute;solution de la Promise retourn&eacute;e par <code>api.post()</code>.</li>
+<li><code>console.log('Login Response Structure:', JSON.stringify(response.data, null, 2));</code>: Affiche la structure de la r&eacute;ponse de l'API dans la console. Cela peut &ecirc;tre utile pour d&eacute;boguer et comprendre la forme des donn&eacute;es renvoy&eacute;es par le serveur. <code>JSON.stringify(..., null, 2)</code> formate la sortie JSON pour une meilleure lisibilit&eacute;.</li>
+<li><code>expect(response.status).toBe(200);</code>: V&eacute;rifie que le statut de la r&eacute;ponse HTTP est 200 (OK), indiquant une requ&ecirc;te r&eacute;ussie.</li>
+<li><code>expect(response.data).toBeDefined();</code>: V&eacute;rifie que le corps de la r&eacute;ponse (<code>response.data</code>) existe.</li>
+<li><code>expect(response.data.status).toBe('success');</code>: V&eacute;rifie que la propri&eacute;t&eacute; <code>status</code> dans les donn&eacute;es de la r&eacute;ponse est &eacute;gale &agrave; 'success'. La structure exacte de <code>response.data</code> d&eacute;pend de l'impl&eacute;mentation de l'API.</li>
+<li><code>if (response.data.user) { ... }</code>: V&eacute;rifie si la r&eacute;ponse contient une propri&eacute;t&eacute; <code>user</code> (contenant les informations de l'utilisateur). Si c'est le cas :
+<ul>
+<li><code>userData = response.data.user;</code>: Stocke les informations de l'utilisateur dans la variable <code>userData</code>.</li>
+<li><code>expect(userData.email).toBe('user@user.net');</code>: V&eacute;rifie que l'e-mail de l'utilisateur r&eacute;cup&eacute;r&eacute; correspond &agrave; celui utilis&eacute; pour la connexion.</li>
+</ul>
+</li>
+<li><code>if (response.data.authorisation &amp;&amp; response.data.authorisation.token) { ... }</code>: V&eacute;rifie si la r&eacute;ponse contient une propri&eacute;t&eacute; <code>authorisation</code> avec une propri&eacute;t&eacute; <code>token</code> (le token d'authentification). Si c'est le cas :
+<ul>
+<li><code>authToken = response.data.authorisation.token;</code>: Stocke le token dans la variable <code>authToken</code>.</li>
+<li><code>expect(authToken).toBeDefined();</code>: V&eacute;rifie que le token a bien &eacute;t&eacute; r&eacute;cup&eacute;r&eacute;.</li>
+</ul>
+</li>
+</ul>
+<p><strong>7. Test de tentative de connexion invalide</strong></p>
+<div>
+<div>JavaScript</div>
+<div>
+<div>
+<pre><code> test('Invalid credentials are rejected', async () =&gt; {
+ expect.assertions(1);
+ try {
+ await api.post('/login', {
+ email: 'mauvais@user.net',
+ password: 'mauvaispassword'
+ });
+ throw new Error('La connexion aurait d&ucirc; &ecirc;tre rejet&eacute;e');
+ } catch (error) {
+ expect(error.response.status).toBe(401);
+ }
+ });
+</code></pre>
+</div>
+</div>
+</div>
+<ul>
+<li><code>test('Invalid credentials are rejected', async () =&gt; { ... })</code>: D&eacute;finit un test asynchrone qui v&eacute;rifie que l'API rejette les tentatives de connexion avec des informations d'identification invalides.</li>
+<li><code>expect.assertions(1);</code>: S'assure qu'au moins une assertion (<code>expect(...)</code>) est appel&eacute;e &agrave; l'int&eacute;rieur du bloc de test. Ceci est utile pour s'assurer que le test v&eacute;rifie bien l'erreur attendue.</li>
+<li><code>try { ... } catch (error) { ... }</code>: Utilise un bloc <code>try...catch</code> pour g&eacute;rer l'erreur attendue.</li>
+<li><code>await api.post('/login', { email: 'mauvais@user.net', password: 'mauvaispassword' });</code>: Tente de se connecter avec des informations d'identification incorrectes.</li>
+<li><code>throw new Error('La connexion aurait d&ucirc; &ecirc;tre rejet&eacute;e');</code>: Si la requ&ecirc;te r&eacute;ussit (ce qui ne devrait pas arriver avec des informations d'identification invalides), une erreur est lanc&eacute;e pour faire &eacute;chouer le test.</li>
+<li><code>expect(error.response.status).toBe(401);</code>: Dans le bloc <code>catch</code>, on v&eacute;rifie que l'erreur captur&eacute;e est une r&eacute;ponse HTTP avec un statut 401 (Non autoris&eacute;), ce qui indique que la tentative de connexion a &eacute;t&eacute; rejet&eacute;e correctement.</li>
+</ul>
+<p><strong>8. Test d'acc&egrave;s au profil utilisateur apr&egrave;s connexion</strong></p>
+<div>
+<div>JavaScript</div>
+<div>
+<div>
+<pre><code> test('Authenticated user can access their profile', async () =&gt; {
+ // Premi&egrave;re &eacute;tape: s'authentifier
+ const loginResponse = await api.post('/login', {
+ email: 'user@user.net',
+ password: 'user123'
+ });
+ expect(loginResponse.status).toBe(200);
+ // Capturer token correcte
+ if (loginResponse.data.authorisation &amp;&amp; loginResponse.data.authorisation.token) {
+ authToken = loginResponse.data.authorisation.token;
+ // Token dans header Authorization
+ api.defaults.headers.common['Authorization'] = `Bearer ${authToken}`;
+ console.log('Token configur&eacute; dans les en-t&ecirc;tes:', authToken.substring(0, 20) + '...');
+ } else {
+ console.log('Aucun token trouv&eacute; dans la r&eacute;ponse de connexion');
+ console.log(JSON.stringify(loginResponse.data, null, 2));
+ throw new Error('Aucun token trouv&eacute; dans la r&eacute;ponse de connexion');
+ }
+ // acc&eacute;der au profil utilisateur avec la route /me
+ try {
+ const profileResponse = await api.get('/me');
+ console.log('Profile response:', JSON.stringify(profileResponse.data, null, 2));
+ expect(profileResponse.status).toBe(200);
+ expect(profileResponse.data).toBeDefined();
+ } catch (error) {
+ console.log('Erreur de profil:', error.response?.status, error.response?.data);
+ console.log('En-t&ecirc;tes envoy&eacute;s:', api.defaults.headers);
+ throw error; // Relancer l'erreur pour faire &eacute;chouer le test
+ }
+ });
+</code></pre>
+</div>
+</div>
+</div>
+<ul>
+<li>Ce test v&eacute;rifie qu'un utilisateur authentifi&eacute; (connect&eacute;) peut acc&eacute;der &agrave; sa page de profil (endpoint <code>/me</code>).</li>
+<li><strong>&Eacute;tape 1 : Connexion</strong>
+<ul>
+<li>Il commence par effectuer une requ&ecirc;te de connexion r&eacute;ussie (comme dans le premier test) pour obtenir un token d'authentification.</li>
+<li>Il v&eacute;rifie que la connexion a r&eacute;ussi (<code>expect(loginResponse.status).toBe(200);</code>).</li>
+<li>Il extrait le token de la r&eacute;ponse et le stocke dans <code>authToken</code>.</li>
+</ul>
+</li>
+<li><strong>Configuration de l'en-t&ecirc;te d'autorisation</strong>
+<ul>
+<li><code>api.defaults.headers.common['Authorization'] =</code>Bearer ${authToken}<code>;</code>: D&eacute;finit l'en-t&ecirc;te <code>Authorization</code> pour toutes les futures requ&ecirc;tes faites avec l'instance <code>api</code>. Le format <code>Bearer &lt;token&gt;</code> est couramment utilis&eacute; pour l'authentification par token (comme JWT).</li>
+<li>Un message est affich&eacute; dans la console pour indiquer que le token a &eacute;t&eacute; configur&eacute;. Seuls les 20 premiers caract&egrave;res du token sont affich&eacute;s pour des raisons de s&eacute;curit&eacute; et de lisibilit&eacute;.</li>
+<li>Si aucun token n'est trouv&eacute; dans la r&eacute;ponse de connexion, une erreur est lanc&eacute;e pour faire &eacute;chouer le test.</li>
+</ul>
+</li>
+<li><strong>Acc&egrave;s au profil</strong>
+<ul>
+<li><code>const profileResponse = await api.get('/me');</code>: Effectue une requ&ecirc;te GET &agrave; l'endpoint <code>/me</code>, qui est suppos&eacute; &ecirc;tre prot&eacute;g&eacute; et n&eacute;cessiter une authentification.</li>
+<li>La r&eacute;ponse du profil est affich&eacute;e dans la console.</li>
+<li><code>expect(profileResponse.status).toBe(200);</code>: V&eacute;rifie que la requ&ecirc;te a r&eacute;ussi (statut 200).</li>
+<li><code>expect(profileResponse.data).toBeDefined();</code>: V&eacute;rifie que le corps de la r&eacute;ponse contient des donn&eacute;es.</li>
+</ul>
+</li>
+<li><strong>Gestion des erreurs d'acc&egrave;s au profil</strong>
+<ul>
+<li>Le bloc <code>try...catch</code> autour de la requ&ecirc;te <code>/me</code> permet de capturer les erreurs potentielles (par exemple, si l'API renvoie un statut 401 car le token n'est pas valide ou manquant).</li>
+<li>Les d&eacute;tails de l'erreur (statut et donn&eacute;es de la r&eacute;ponse) et les en-t&ecirc;tes envoy&eacute;s sont affich&eacute;s dans la console pour le d&eacute;bogage.</li>
+<li><code>throw error;</code>: Relance l'erreur pour que Jest consid&egrave;re le test comme ayant &eacute;chou&eacute; si une erreur s'est produite lors de l'acc&egrave;s au profil.</li>
+</ul>
+</li>
+</ul>
+<p><strong>9. Test de d&eacute;connexion utilisateur</strong></p>
+<div>
+<div>JavaScript</div>
+<div>
+<div>
+<pre><code> test('User can logout', async () =&gt; {
+ // Premi&egrave;re &eacute;tape: s'authentifier avec login et mdp
+ const loginResponse = await api.post('/login', {
+ email: 'user@user.net',
+ password: 'user123'
+ });
+ expect(loginResponse.status).toBe(200);
+ // Capturer le token de la structure correcte
+ if (loginResponse.data.authorisation &amp;&amp; loginResponse.data.authorisation.token) {
+ authToken = loginResponse.data.authorisation.token;
+ // Configurer le token dans le header Authorization
+ api.defaults.headers.common['Authorization'] = `Bearer ${authToken}`;
+ } else {
+ console.log(' Aucun token trouv&eacute; dans la r&eacute;ponse de connexion');
+ console.log(JSON.stringify(loginResponse.data, null, 2));
+ throw new Error('Aucun token trouv&eacute; dans la r&eacute;ponse de connexion');
+ }
+ // D&eacute;connecter l'utilisateur
+ try {
+ const logoutResponse = await api.post('/logout');
+ expect(logoutResponse.status).toBe(200);
+ } catch (error) {
+ console.log('Erreur de d&eacute;connexion:', error.response?.status, error.response?.data);
+ throw error;
+ }
+ // Apr&egrave;s d&eacute;connexion, test d'acc&eacute;der au profil devrait &eacute;chouer normalement
+ api.defaults.headers.common['Authorization'] = null; // Simuler l'effacement du token
+ try {
+ await api.get('/me');
+ throw new Error('L\'acc&egrave;s au profil aurait d&ucirc; &ecirc;tre refus&eacute; apr&egrave;s d&eacute;connexion');
+ } catch (error) {
+ expect(error.response.status).toBe(401);
+ }
+ });
+</code></pre>
+</div>
+</div>
+</div>
+<ul>
+<li>Ce test v&eacute;rifie la fonctionnalit&eacute; de d&eacute;connexion de l'utilisateur.</li>
+<li><strong>&Eacute;tape 1 : Connexion</strong>
+<ul>
+<li>Similaire au test pr&eacute;c&eacute;dent, il commence par connecter l'utilisateur et obtenir un token.</li>
+<li>Le token est configur&eacute; dans l'en-t&ecirc;te <code>Authorization</code>.</li>
+</ul>
+</li>
+<li><strong>D&eacute;connexion</strong>
+<ul>
+<li><code>const logoutResponse = await api.post('/logout');</code>: Effectue une requ&ecirc;te POST &agrave; l'endpoint <code>/logout</code> pour d&eacute;connecter l'utilisateur.</li>
+<li><code>expect(logoutResponse.status).toBe(200);</code>: V&eacute;rifie que la requ&ecirc;te de d&eacute;connexion a r&eacute;ussi (statut 200).</li>
+<li>G&egrave;re les potentielles erreurs lors de la d&eacute;connexion.</li>
+</ul>
+</li>
+<li><strong>V&eacute;rification de l'acc&egrave;s apr&egrave;s d&eacute;connexion</strong>
+<ul>
+<li><code>api.defaults.headers.common['Authorization'] = null;</code>: Supprime explicitement l'en-t&ecirc;te <code>Authorization</code> pour simuler l'&eacute;tat apr&egrave;s la d&eacute;connexion.</li>
+<li><code>try { await api.get('/me'); ... } catch (error) { ... }</code>: Tente d'acc&eacute;der &agrave; l'endpoint <code>/me</code> (qui n&eacute;cessite une authentification) apr&egrave;s la d&eacute;connexion.</li>
+<li><code>throw new Error('L\'acc&egrave;s au profil aurait d&ucirc; &ecirc;tre refus&eacute; apr&egrave;s d&eacute;connexion');</code>: Si la requ&ecirc;te <code>/me</code> r&eacute;ussit apr&egrave;s la d&eacute;connexion (ce qui ne devrait pas arriver), une erreur est lanc&eacute;e.</li>
+<li><code>expect(error.response.status).toBe(401);</code>: V&eacute;rifie que la tentative d'acc&egrave;s au profil apr&egrave;s la d&eacute;connexion est rejet&eacute;e avec un statut 401 (Non autoris&eacute;).</li>
+</ul>
+</li>
+</ul>
+<p>En r&eacute;sum&eacute;, ce code de test utilise Jest et Axios pour automatiser la v&eacute;rification des fonctionnalit&eacute;s d'authentification d'une API. Il teste les sc&eacute;narios de connexion r&eacute;ussie et &eacute;chou&eacute;e, l'acc&egrave;s aux ressources prot&eacute;g&eacute;es apr&egrave;s la connexion, et la fonctionnalit&eacute; de d&eacute;connexion. Les <code>expect</code> permettent de faire des assertions sur le comportement attendu de l'API pour chaque sc&eacute;nario de test.</p>

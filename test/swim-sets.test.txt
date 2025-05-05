@@ -1,0 +1,46 @@
+/Users/mac/Downloads/APP_NS_V1/dev_projet/sauvegardegit/test/sets.test.js
+
+  // note dev // email: 'user@user.net',  // admin@admin.net
+      // note dev // password: 'user123'      // admin123
+      
+
+GO  - npx jest swim-sets.test.js
+
+Caractéristiques de ces tests
+
+Configuration robuste:
+
+Authentification avant tous les tests
+Récupération ou création d'un exercice de test à utiliser avec les séries
+Nettoyage des données de test après l'exécution
+
+
+Tests complets:
+
+Récupération de toutes les séries
+Création d'une nouvelle série
+Récupération d'une série spécifique
+Mise à jour d'une série
+Association d'une série à une séance d'entraînement
+Suppression d'une série
+Gestion des erreurs (données invalides, ressources inexistantes)
+
+
+Débogage amélioré:
+
+Logs détaillés à chaque étape
+Affichage des structures de données complètes
+Messages clairs sur les actions effectuées
+
+
+Gestion des erreurs:
+
+Test de validation des données
+Test de réponse 404 pour les ressources inexistantes
+
+
+
+Comment utiliser ce fichier de test
+
+Créez un nouveau fichier swim-sets.test.js dans votre dossier de test
+Copiez le code ci-dessus dans ce fichier

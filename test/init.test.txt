@@ -1,0 +1,10 @@
+==> revoir l'ordre des test :- error login
+
+
+test/pages.test.js
+Le fichier pages.test.js qui teste les fonctionnalités des plans d'entraînement :
+
+  // note dev // email: 'user@user.net',  // admin@admin.net
+      // note dev // password: 'user123'      // admin123
+
+      npx jest init.test.js

@@ -1,0 +1,33 @@
+test/exercises.test.js
+Le fichier pages.test.js qui teste les fonctionnalités des exercices :
+
+  // note dev // email: 'user@user.net',  // admin@admin.net
+      // note dev // password: 'user123'      // admin123
+
+      npx jest exercises.test.js
+
+Caractéristiques des tests pour les exercices
+
+Tests CRUD complets
+
+Création d'un nouvel exercice
+Récupération de tous les exercices et d'un exercice spécifique
+Mise à jour d'un exercice existant
+Suppression d'un exercice
+
+
+Tests de relation et fonctionnalités avancées
+
+Recherche des séances utilisant un exercice spécifique (la route peut varier)
+Filtrage des exercices par catégorie
+Filtrage des exercices par niveau de difficulté
+
+
+Tests de gestion des erreurs
+
+Exercice inexistant (404)
+Données invalides lors de la création (400/422)
+
+
+
+

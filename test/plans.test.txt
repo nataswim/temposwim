@@ -1,0 +1,49 @@
+test/plans.test.js
+Le fichier plans.test.js qui teste les fonctionnalités des plans d'entraînement :
+
+  // note dev // email: 'user@user.net',  // admin@admin.net
+      // note dev // password: 'user123'      // admin123
+
+Ces tests couvriront  les fonctionnalités CRUD des plans ainsi que leurs relations avec les séances d'entraînement.
+
+
+Caractéristiques des tests pour les plans d'entraînement
+
+Configuration 
+
+Authentification avec un compte admin
+Préparation ou récupération des données  (séance d'entraînement)
+Nettoyage des données de test
+
+
+Tests CRUD complets
+
+Création d'un plan d'entraînement
+Récupération de tous les plans et d'un plan spécifique
+Mise à jour d'un plan avec tous les champs obligatoires
+Suppression d'un plan
+
+
+Tests de relations
+
+Ajout d'une séance à un plan
+Récupération des séances d'un plan
+Suppression d'une séance d'un plan
+
+
+
+Tests de gestion des erreurs
+
+Plan inexistant (404)
+Données invalides (400/422)
+
+
+Adaptations importantes pour les APIs RESTful
+
+Acceptation des codes 200 ou 201 pour les créations
+Acceptation des codes 200 ou 204 pour les suppressions
+Vérification que l'ID utilisateur est inclus lors des mises à jour
+
+
+Ces tests devraient fonctionner avec votre application Laravel 11. 
+Le code inclut  des logs détaillés pour faciliter le débogage si certains tests échouent.

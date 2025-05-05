@@ -1,0 +1,46 @@
+test/pages.test.js
+Le fichier pages.test.js qui teste les fonctionnalités des plans d'entraînement :
+
+  // note dev // email: 'user@user.net',  // admin@admin.net
+      // note dev // password: 'user123'      // admin123
+
+      npx jest pages.test.js
+
+
+      Caractéristiques des tests pour les pages
+
+Tests d'accès publics et authentifiés
+
+Tests de récupération des pages sans authentification
+Tests avec authentification pour les opérations d'édition
+
+
+Tests CRUD complets
+
+Création d'une nouvelle page
+Récupération de toutes les pages et d'une page spécifique (par ID et par slug)
+Mise à jour complète (PUT) et partielle (PATCH) d'une page
+Suppression d'une page
+
+
+Tests de fonctionnalités spécifiques aux CMS
+
+Changement de statut (published/draft)
+Gestion des slugs pour les URLs conviviales
+
+
+Tests de gestion des erreurs
+
+Page inexistante (404)
+Données invalides lors de la création (400/422)
+
+
+Adaptations 
+
+Préservation du token pour les tests authentifiés
+Support de la méthode PATCH avec fallback sur PUT si nécessaire
+Acceptation des codes 200 ou 204 pour les suppressions
+
+
+
+

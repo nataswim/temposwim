@@ -1,0 +1,177 @@
+
+├── app
+│   ├── .DS_Store
+│   ├── Http
+│   │   ├── .DS_Store
+│   │   └── Controllers
+│   │       ├── .DS_Store
+│   │       ├── Api
+│   │       │   ├── AuthController.php
+│   │       │   ├── ExerciseController.php
+│   │       │   ├── MylistController.php
+│   │       │   ├── MylistItemController.php
+│   │       │   ├── PageController.php
+│   │       │   ├── PlanController.php
+│   │       │   ├── PlanWorkoutController.php
+│   │       │   ├── RoleController.php
+│   │       │   ├── SwimSetController.php
+│   │       │   ├── UploadController.php
+│   │       │   ├── UserController.php
+│   │       │   ├── WorkoutController.php
+│   │       │   ├── WorkoutExerciseController.php
+│   │       │   └── WorkoutSwimSetController.php
+│   │       └── Controller.php
+│   ├── Models
+│   │   ├── Exercise.php
+│   │   ├── MyList.php
+│   │   ├── MyListItem.php
+│   │   ├── Page.php
+│   │   ├── Plan.php
+│   │   ├── PlanWorkout.php
+│   │   ├── Role.php
+│   │   ├── SwimSet.php
+│   │   ├── Upload.php
+│   │   ├── User.php
+│   │   ├── Workout.php
+│   │   ├── WorkoutExercise.php
+│   │   └── WorkoutSwimSet.php
+│   └── Providers
+│       └── AppServiceProvider.php
+├── artisan
+├── back_structure.txt
+├── bootstrap
+│   ├── app.php
+│   ├── cache
+│   │   ├── .gitignore
+│   │   ├── packages.php
+│   │   └── services.php
+│   └── providers.php
+├── composer.json
+├── composer.lock
+├── config
+│   ├── app.php
+│   ├── auth.php
+│   ├── cache.php
+│   ├── cors.php
+│   ├── database.php
+│   ├── filesystems.php
+│   ├── jwt.php
+│   ├── logging.php
+│   ├── mail.php
+│   ├── queue.php
+│   ├── sanctum.php
+│   ├── services.php
+│   └── session.php
+├── database
+│   ├── .DS_Store
+│   ├── .gitignore
+│   ├── factories
+│   │   └── UserFactory.php
+│   ├── migrations
+│   │   ├── 0001_01_01_000001_create_cache_table.php
+│   │   ├── 0001_01_01_000002_create_jobs_table.php
+│   │   ├── 01_create_roles_table.php
+│   │   ├── 02_create_users_table.php
+│   │   ├── 03_create_uploads_table.php
+│   │   ├── 04_create_pages_table.php
+│   │   ├── 05_create_exercises_table.php
+│   │   ├── 05_create_plans_table.php
+│   │   ├── 07_create_workouts_table.php
+│   │   ├── 08_create_swim_sets_table.php
+│   │   ├── 09_create_my_lists_table.php
+│   │   ├── 10_create_workout_exercises_table.php
+│   │   ├── 11_create_workout_swim_sets_table.php
+│   │   ├── 12_create_plan_workouts_table.php
+│   │   ├── 13_create_my_list_items_table.php
+│   │   ├── 2025_02_21_171749_create_personal_access_tokens_table.php
+│   │   ├── 2025_02_22_143626_modify_users_table.php
+│   │   └── 2025_02_22_164713_remove_old_name_from_users_table.php
+│   └── seeders
+│       ├── DatabaseSeeder.php
+│       ├── ExerciseSeeder.php
+│       ├── MylistItemSeeder.php
+│       ├── MylistSeeder.php
+│       ├── PageSeeder.php
+│       ├── PlanSeeder.php
+│       ├── PlanWorkoutSeeder.php
+│       ├── RoleSeeder.php
+│       ├── SwimSetSeeder.php
+│       ├── UploadSeeder.php
+│       ├── UserSeeder.php
+│       ├── WorkoutExerciseSeeder.php
+│       ├── WorkoutSeeder.php
+│       └── WorkoutSwimSetSeeder.php
+├── export-postman.php
+├── LICENSE
+├── package.json
+├── phpunit.xml
+├── postcss.config.js
+├── postman_collection.json
+├── project_structure.txt
+├── public
+│   ├── .htaccess
+│   ├── favicon.ico
+│   ├── index.php
+│   ├── robots.txt
+│   └── storage -> /Users/mac/Downloads/APP_NS_V1/dev_projet/sauvegardegit/back/storage/app/public
+├── resources
+│   ├── css
+│   │   └── app.css
+│   ├── js
+│   │   ├── app.js
+│   │   └── bootstrap.js
+│   └── views
+│       └── welcome.blade.php
+├── routes
+│   ├── api.php
+│   ├── console.php
+│   └── web.php
+├── routes.json
+├── storage
+│   ├── app
+│   │   ├── .gitignore
+│   │   ├── private
+│   │   │   ├── .gitignore
+│   │   │   └── uploads
+│   │   │       ├── 3Ug6df3ARZFOMvBvv8BIOssiQOvcFRY1ySzwrb6g.png
+│   │   │       ├── 48ntkBTTgOSD1xdQRU7CQLMxRI8prsE6KEhLGZjn.png
+│   │   │       ├── KwYMywK6LquL67vrDBUX0xt4OTjqoAciLNQEN509.png
+│   │   │       └── usYYoyIQ6wN6xVTncgR7aurwld6WpHUhUUwa2cEz.png
+│   │   ├── public
+│   │   │   ├── .gitignore
+│   │   │   └── uploads
+│   │   │       ├── 0UTWVPdWuQd4IVQX95ZAqYJaka3npTXpZTipmPiI.jpg
+│   │   │       ├── 1Oz2JJA0s93PnMuHd18Q6pSel2nJdHYjtZMdGlZb.jpg
+│   │   │       ├── 1vnsFZ9ZdhYJlb6zIgrLuI2h8913w5I3c8poVWPH.jpg
+│   │   │       ├── 1WfvRiJmUkxzI1oYro6nMQdbJJEhk6EmkxnS0w3z.jpg
+│   │   │       ├── 1YWzHurzaxhnbsogLgeqLLhTwMmVUE4BP3dJd5xK.jpg
+│   │   │       ├── 3z9NHulQZzpB3mGk1Jytdu85EMoNl1cYJgmpaCTV.jpg
+│   │   │       ├── 4CcEuIqTyFi8FZkoiqpgyfDOi4UaodeflGLntktg.jpg
+│   │   │       ├── 4Eua7Co2SBKPoxa1SZE8TNspdn31aQDLxPCFzv3E.jpg
+│   │   │       ├── 4KROeGhtQKz8ZXXE8t2Vi9f9Hr4weim8eqB7yOvJ.jpg
+│   │   └── uploads
+│   ├── framework
+│   │   ├── .gitignore
+│   │   ├── cache
+│   │   │   ├── .gitignore
+│   │   │   └── data
+│   │   │       └── .gitignore
+│   │   ├── sessions
+│   │   │   └── .gitignore
+│   │   ├── testing
+│   │   │   └── .gitignore
+│   │   └── views
+│   │       ├── .gitignore
+│   │       ├── 02833bba9be9c12a317a65bd58a89652.php
+│   │       ├── 1a11dd4d21562385be181283b0ba52ed.php
+│   ├── logs
+│   │   ├── .gitignore
+│   │   └── laravel.log
+│   └── uploads
+├── tailwind.config.js
+├── tests
+│   ├── Feature
+│   │   └── ExampleTest.php
+│   ├── TestCase.php
+│   └── Unit
+│       └── ExampleTest.php

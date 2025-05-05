@@ -1,0 +1,376 @@
+
+Mardi 22 avril 2025 - 9H00 --- 17H00
+
+
+Sources : - 
+file:///Users/mac/Downloads/Les%20tests.pdf 
+https://beta.formao.fr/cours
+https://beta.formao.fr/cours/pokedex-partie-1-backend-parcours-cda
+https://beta.formao.fr/cours/pokedex-partie-1-backend-parcours-cda/pokedex-partie-1-backend/testez-votre-api
+
+--------------------
+/// Cours : NOTES : voir formeo arinfo
+-------------------
+## Dans le cadre de ce cursus, nous allons nous concentrer exclusivement sur les tests d’API, 
+qui constituent l’un des éléments les plus cruciaux dans une architecture en trois couches (frontend / backend / base de données).
+
+/// Mise en place d’un projet de test indépendant
+
+## Nous allons créer un programme entièrement séparé du reste de l'application.
+Ce projet sera écrit en Node.js, et utilisera Jest pour l'exécution des tests et Axios pour effectuer les requêtes HTTP.
+le code des appels Axios pourra être facilement réutilisé dans le frontend 
+
+Initialisation du projet
+# Initialiser un projet Node.js
+npm init
+
+# Installer les outils de test
+npm install jest
+
+# Installer Axios pour les requêtes HTTP
+npm install axios
+
+
+## Exemple de package.json configuré
+{
+  "name": "test",
+  "version": "1.0.0",
+  "module": "esnext",
+  "description": "test app",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "jest --runInBand"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^5.1.1",
+    "jest": "^29.7.0"
+  },
+  "dependencies": {
+    "axios": "^1.8.4",
+    "jest": "^29.7.0"
+  }
+}
+
+## La ligne  dans les scripts :
+"test": "jest --runInBand" ==>  permet de lancer l’ensemble des tests en séquence avec la commande :
+npm run test
+pour lancer une seul test exemple :  - npx jest workouts.test.js // npx nom du fichier
+
+--------------------
+TEST API
+--------------------
+
+Test de procédure de connexion
+
+--- /test/init.test.js
+--- Mardi 22 Avril 2025 11H17
+
+  // note dev // email: 'user@user.net',  // admin@admin.net
+      // note dev // password: 'user123'      // admin123
+
+
+-------------------
+résultats
+-----------------
+
+Test de connexion réussie :
+
+La réponse de l'API contient  un statut "success"
+Les informations utilisateur sont correctement retournées
+Le token JWT est présent dans la structure authorisation.token
+Le format du token est  (JWT avec en-tête, charge utile et signature)
+
+
+Test d'accès au profil :
+
+Le token est correctement appliqué dans l'en-tête HTTP
+La route /me retourne les informations de l'utilisateur authentifié
+La structure de la réponse contient le même utilisateur que celui qui s'est connecté
+
+
+Test de déconnexion :
+
+La déconnexion fonctionne correctement
+Une fois déconnecté.
+
+
+
+RESUME :
+
+Sécurité : Le système JWT est  implémenté
+Structure des réponses : Les réponses sont cohérentes
+Gestion des erreurs : Les codes d'erreur 401 sont renvoyés quand l'authentification échoue
+
+
+
+----------------------------
+EXPLICATION GEMINI : 
+----------------------------
+
+Récupération et de l'enregistrement du token JWT dans les tests
+
+La gestion des tokens JWT (JSON Web Tokens) est un élément crucial de l'authentification dans les applications web modernes. 
+
+Voici une explication détaillée de ce processus dans  tests :
+------
+1. Structure du token JWT dans votre API
+D'après les résultats des tests,  API renvoie le token JWT dans une structure spécifique :
+json{
+  "status": "success",
+  "user": {
+    "id": 2,
+    "username": "user1",
+    "email": "user@user.net",
+    // autres propriétés...
+  },
+  "authorisation": {
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc...",
+    "type": "bearer"
+  }
+}
+Le token se trouve dans response.data.authorisation.token et son type est spécifié comme "bearer".
+
+-------
+2. Récupération du token lors de la connexion
+Dans vos tests, le token est récupéré après une connexion réussie :
+javascript// Connexion utilisateur
+const loginResponse = await api.post('/login', {
+  email: 'user@user.net',
+  password: 'user123'
+});
+
+// Récupération du token dans la structure appropriée
+const authToken = loginResponse.data.authorisation.token;
+
+
+-----
+3. Enregistrement du token pour les requêtes suivantes
+Une fois le token récupéré, il est enregistré dans les en-têtes HTTP pour toutes les requêtes suivantes :
+javascript// Configuration de l'en-tête Authorization avec le format Bearer
+api.defaults.headers.common['Authorization'] = `Bearer ${authToken}`;
+Cette ligne est cruciale car elle établit l'authentification pour toutes les requêtes API suivantes effectuées avec l'instance Axios. Le préfixe "Bearer" est un standard pour indiquer le type de token.
+
+------
+4. Vérification et débogage du token
+Les tests incluent également des vérifications et du débogage pour s'assurer que le token est correctement récupéré et appliqué :
+javascript// Vérifier que le token est défini
+expect(authToken).toBeDefined();
+
+// Log pour le débogage (affiche les premiers caractères du token)
+console.log('Token configuré dans les en-têtes:', authToken.substring(0, 20) + '...');
+
+--------
+5. Utilisation du token pour accéder aux routes protégées
+Le token permet ensuite d'accéder aux routes protégées, comme /me :
+javascript// Requête vers une route protégée avec le token configuré
+const profileResponse = await api.get('/me');
+
+// La réponse devrait être un succès (200) si le token est valide
+expect(profileResponse.status).toBe(200);
+
+--------
+6. Suppression du token lors de la déconnexion
+Lors de la déconnexion, le token est supprimé des en-têtes :
+javascript// Déconnexion
+await api.post('/logout');
+
+// Suppression du token des en-têtes pour simuler une déconnexion côté client
+api.defaults.headers.common['Authorization'] = null;
+Aspects importants à noter
+
+Sécurité du token : Dans une application réelle, le token serait stocké dans un endroit sécurisé comme le localStorage ou dans un cookie HttpOnly
+
+Expiration du token : Les tokens JWT ont généralement une durée de validité. D'après votre token, l'expiration est configurée (visible dans la partie exp du payload)
+
+Type de token : Votre API spécifie explicitement que c'est un token de type "bearer", ce qui correspond bien à l'en-tête HTTP utilisé
+Gestion des erreurs : Les tests intègrent une vérification d'erreur 401 (Non autorisé) lorsque le token est absent ou invalide
+
+
+
+-------------
+Code final
+-----------
+
+      // note dev // email: 'user@user.net',  // admin@admin.net
+      // note dev // password: 'user123'      // admin123
+
+      const { expect } = require('@jest/globals');
+      const axios = require('axios');
+      
+      // Configuration de base d'Axios
+
+      const api = axios.create({
+        baseURL: 'http://localhost:8000/api',
+        headers: {
+          Accept: 'application/json'
+        },
+        withCredentials: true
+      });
+      
+      /**
+       * EN : - Authentication test 
+       * FR : - tests d'authentification
+       */
+
+      describe('Authentication', () => {
+        let userData = {};
+        let authToken = null;
+        
+        beforeEach(() => {
+          userData = {};
+          authToken = null;
+          api.defaults.headers.common['Authorization'] = null;
+        });
+        
+        /**
+         * EN : - Test successful user login
+         * FR : - Test de connexion utilisateur réussie
+         */
+
+        test('User can login with valid credentials', async () => {
+          const response = await api.post('/login', {
+            email: 'user@user.net',
+            password: 'user123'
+          });
+          
+          // Afficher la structure de la réponse
+          console.log('Login Response Structure:', JSON.stringify(response.data, null, 2));
+          
+          // Vérifier connexion réussi
+
+          expect(response.status).toBe(200);
+          expect(response.data).toBeDefined();
+          expect(response.data.status).toBe('success');
+          
+          // Vérifier  données user
+
+          if (response.data.user) {
+            userData = response.data.user;
+            expect(userData.email).toBe('user@user.net');
+          }
+          
+          // Capturer  token 
+
+          if (response.data.authorisation && response.data.authorisation.token) {
+            authToken = response.data.authorisation.token;
+            expect(authToken).toBeDefined();
+          }
+        });
+        
+        /**
+         * EN : - Test invalid login attempt
+         * FR : - Test de tentative de connexion invalide
+         */
+
+        test('Invalid credentials are rejected', async () => {
+          expect.assertions(1);
+          
+          try {
+            await api.post('/login', {
+              email: 'mauvais@user.net',
+              password: 'mauvaispassword'
+            });
+            throw new Error('La connexion aurait dû être rejetée');
+          } catch (error) {
+            expect(error.response.status).toBe(401);
+          }
+        });
+        
+        /**
+         * EN : - Test access to user profile after login
+         * FR : - Test d'accès au profil utilisateur après connexion
+         */
+
+        test('Authenticated user can access their profile', async () => {
+          // Première étape: s'authentifier
+          const loginResponse = await api.post('/login', {
+            email: 'user@user.net',
+            password: 'user123'
+          });
+          
+          expect(loginResponse.status).toBe(200);
+          
+          // Capturer  token correcte
+          if (loginResponse.data.authorisation && loginResponse.data.authorisation.token) {
+            authToken = loginResponse.data.authorisation.token;
+            
+            // Token dans  header Authorization
+            api.defaults.headers.common['Authorization'] = `Bearer ${authToken}`;
+            console.log('Token configuré dans les en-têtes:', authToken.substring(0, 20) + '...');
+          } else {
+            console.log('Aucun token trouvé dans la réponse de connexion');
+            console.log(JSON.stringify(loginResponse.data, null, 2));
+            throw new Error('Aucun token trouvé dans la réponse de connexion');
+          }
+          
+          // accéder au profil utilisateur avec la route /me
+          try {
+            const profileResponse = await api.get('/me');
+            
+            console.log('Profile response:', JSON.stringify(profileResponse.data, null, 2));
+            
+            expect(profileResponse.status).toBe(200);
+            expect(profileResponse.data).toBeDefined();
+          } catch (error) {
+            console.log('Erreur de profil:', error.response?.status, error.response?.data);
+            console.log('En-têtes envoyés:', api.defaults.headers);
+            throw error; // Relancer l'erreur pour faire échouer le test
+          }
+        });
+        
+        /**
+         * EN : - Test user logout
+         * FR : - Test de déconnexion utilisateur
+         */
+
+        test('User can logout', async () => {
+          // Première étape: s'authentifier avec login et mdp
+          const loginResponse = await api.post('/login', {
+            email: 'user@user.net',
+            password: 'user123'
+          });
+          
+          expect(loginResponse.status).toBe(200);
+          
+          // Capturer le token de la structure correcte
+
+          if (loginResponse.data.authorisation && loginResponse.data.authorisation.token) {
+            authToken = loginResponse.data.authorisation.token;
+            
+            // Configurer le token dans le header Authorization
+
+            api.defaults.headers.common['Authorization'] = `Bearer ${authToken}`;
+          } else {
+            console.log(' Aucun token trouvé dans la réponse de connexion');
+            console.log(JSON.stringify(loginResponse.data, null, 2));
+            throw new Error('Aucun token trouvé dans la réponse de connexion');
+          }
+          
+          // Déconnecter l'utilisateur
+
+          try {
+            const logoutResponse = await api.post('/logout');
+            expect(logoutResponse.status).toBe(200);
+          } catch (error) {
+            console.log('Erreur de déconnexion:', error.response?.status, error.response?.data);
+            throw error;
+          }
+          
+          // Après déconnexion, test d'accéder au profil devrait échouer normalement 
+          
+          api.defaults.headers.common['Authorization'] = null; // Simuler l'effacement du token
+          
+          try {
+            await api.get('/me');
+            throw new Error('L\'accès au profil aurait dû être refusé après déconnexion');
+          } catch (error) {
+            expect(error.response.status).toBe(401);
+          }
+        });
+      });
+
+
+
