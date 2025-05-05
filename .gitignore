@@ -1,23 +1,38 @@
-# Node.js
-node_modules/
-
-# Laravel
-/vendor
-/.env
-.env.*.local
-.env.*.example
-.phpunit.result.cache
-storage/logs
-storage/framework/cache
-storage/framework/sessions
-storage/framework/views
-public/storage
+# Général
 .DS_Store
 Thumbs.db
-
-# Général
 .idea/
+.vscode/
 *.log
 *.swp
 *.swo
-.vscode/
+
+# Docker
+.dockerenv
+docker-compose.override.yml
+
+# Laravel
+/back/vendor/
+/back/.env
+/back/.env.*.local
+/back/.env.*.example
+/back/.phpunit.result.cache
+/back/storage/logs/
+/back/storage/framework/cache/
+/back/storage/framework/sessions/
+/back/storage/framework/views/
+/back/public/storage/
+/back/bootstrap/cache/
+
+# React
+/front/node_modules/
+/front/build/ # Si tu ne veux pas versionner la build
+/front/.cache/
+/front/.parcel-cache/ # Si tu utilises Parcel
+/front/.yarn/.cache/ # Si tu utilises Yarn 2+
+/front/yarn-error.log
+
+# Tests (si tu ne veux pas les inclure dans le dépôt principal)
+/test/coverage/
+/test/phpunit.xml.dist # ou phpunit.xml
+/test/.phpunit/
