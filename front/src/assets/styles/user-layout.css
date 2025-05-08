@@ -26,7 +26,7 @@ bg-swim {
 .title-swim {
   background-color: #ffffff;
   padding: 15px 10px;
-  color: #048080;
+  color: #004F59;
   text-align: center;
   box-shadow: 0px 12px 18px -6px rgba(0, 0, 0, 0.3) !important;
   font-size: 2rem;
@@ -39,8 +39,8 @@ bg-swim {
 .user-header {
   background-color: #f9f5f2;
   border: 10px solid #004f59;
-  border-bottom: 10px solid #048080;
-  border-top: 10px solid #048080;
+  border-bottom: 10px solid #004F59;
+  border-top: 10px solid #004F59;
 }
 
 .logo-wrapper {
@@ -66,7 +66,7 @@ bg-swim {
 }
 
 .user-logout-btn {
-  background-color: #048080;
+  background-color: #004F59;
     padding: 10px;
     border-radius: 20px 0px 0px 20px;
 }
@@ -83,7 +83,7 @@ bg-swim {
     color: #fff;
     padding: 1rem 0;
     border-left: 10px solid #f9f5f2;
-    border-bottom: 40px solid #048080;
+    border-bottom: 40px solid #004F59;
     border-top: 40px solid #008080;
     border-right: 10px solid #f9f5f2;
 }

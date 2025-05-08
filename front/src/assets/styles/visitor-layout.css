@@ -30,7 +30,7 @@ bg-swim {
 .title-swim {
   background-color: #ffffff;
   padding: 15px 10px;
-  color: #048080;
+  color: #004F59;
   text-align: center;
   box-shadow: 0px 12px 18px -6px rgba(0, 0, 0, 0.3) !important;
   font-size: 2rem;
@@ -42,8 +42,8 @@ bg-swim {
 
 .visitor-header {
   background-color: #f9f5f2;
-  border: 20px solid #5bcacb;
-  border-bottom: 1px dashed #5bcacb;
+  border: 20px solid #048080;
+  border-bottom: 1px dashed #048080;
   border-top: 5px dotted #ecf9fe;
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
@@ -72,10 +72,11 @@ bg-swim {
 }
 
 .visitor-logout-btn {
-  background-color: #5bcacb;
-    padding: 10px;
-    border: none;
-    box-shadow: 0px 12px 18px -6px rgba(0, 0, 0, 0.3) !important;
+  background-color: #004F59;
+  padding: 10px;
+  border: none;
+  color: #FFFFFF;
+  box-shadow: 0px 12px 18px -6px rgba(0, 0, 0, 0.3) !important;
 }
 
 /* Ajustements pour la navbar */
@@ -86,7 +87,7 @@ bg-swim {
 
 /* Ajustements pour le footer */
 .visitor-footer {
-  background-color: #048080;
+  background-color: #004F59;
     color: #fff;
     padding: 1rem 0;
     border-left: 20px solid #5bcacb;
@@ -108,10 +109,10 @@ bg-swim {
 .visitor-nav-link:hover,
 .visitor-nav-link:active,
 .visitor-nav-link:focus {
-  background-color: #5bcacb; 
-color: #000;  
-font-weight: 800;
-outline: 1px solid #ffffff; 
+  background-color: #004F59; 
+  color: #FFFFFF !important;  
+  font-weight: 800;
+  outline: 1px solid #ffffff; 
   border: none;
 }
 
@@ -130,25 +131,26 @@ outline: 1px solid #ffffff;
 }
 
 .dropdown-visitor.active, .dropdown-visitor:active {
-  color: #484757;
-    text-decoration: none;
-    background-color: #21cfc6;
-    display: block;
-    padding: 15px 5px;
-    font-weight: bolder;
+  color: #FFFFFF;
+  text-decoration: none;
+  background-color: #004F59;
+  display: block;
+  padding: 15px 5px;
+  font-weight: bolder;
 }
+
 .dropdown-menu.show {
   display: block;
   min-height: 200%;
   background-color: #f9f5f3;
   padding: 10px 10px;
-  border: 2px solid #5bcacb;
+  border: 2px solid #004F59;
   min-width: 200%;
 }
 
 .banner-container-outer {
   width: 100%;
-  background-color: #5bcacb;
+  background-color: #048080;
   display: flex;
   justify-content: center;
 }

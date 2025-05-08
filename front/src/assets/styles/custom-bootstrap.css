@@ -1,21 +1,23 @@
 /* Custom background color for primary elements */
 .bg-primary {
     --bs-bg-opacity: 1;
-    background-color: #5bcacb !important; /* Light teal */
+    background-color: #048080 !important; /* Teal plus foncé pour meilleur contraste */
 }
 
 /* Customizations for Bootstrap components */
 
 /* Primary button with custom color */
 .btn-primary {
-    background-color: #21cfc6 !important; /* Bright teal */
-    border-color: #21cfc6 !important;
+    background-color: #004F59 !important; /* Bleu-vert foncé */
+    border-color: #004F59 !important;
+    color: #FFFFFF !important;
 }
 
 /* Secondary button with custom color */
 .btn-secondary {
-    background-color: #42a4a8 !important; /* Light teal */
-    border-color: #42a4a8 !important;
+    background-color: #2A6D70 !important; /* Teal plus foncé */
+    border-color: #2A6D70 !important;
+    color: #FFFFFF !important;
 }
 
 /* Active state for nav pills */
@@ -91,4 +93,9 @@
 .bg-primary-subtle {
     background-color: #5bcacb !important;
     color: #fff;
+}
+.badge.bg-info {
+    background-color: #0073b3 !important; /* Bleu plus foncé */
+    color: #FFFFFF !important;
+    font-weight: 600;
 }

@@ -23,7 +23,7 @@ const Footer = () => {
         <div className="row">
           {/* Colonne Logo & Description */}
           <div className="col-md-4 mb-4">
-            <h5 className="text-uppercase mb-4 fw-bold">NSAPP</h5>
+            <h5>TempoSwim</h5>
             <p className="mb-3">
               Plateforme innovante dédiée aux nageurs et coachs pour optimiser leurs performances et suivre leur progression dans l'eau.
             </p>

@@ -51,12 +51,12 @@ a:hover {
 
 /* Custom Utility Classes */
 .text-primary {
-  color: #048080 !important;
+  color: #004F59 !important;
 }
 
 .bg-primary {
-  background-color: #5bcacb !important;
-  color: var(--text-on-primary);
+  background-color: #048080 !important;
+  color: #FFFFFF !important;
 }
 
 /* Card Styles */
@@ -72,14 +72,15 @@ a:hover {
 
 /* Buttons */
 .btn-primary {
-  background-color: var(--primary-color);
-  border-color: var(--primary-color);
-  color: var(--text-on-primary);
+  background-color: #004F59 !important;
+  border-color: #004F59 !important;
+  color: #FFFFFF !important;
 }
 
 .btn-primary:hover {
-  background-color: var(--primary-color-hover);
-  border-color: var(--primary-color-hover);
+  background-color: #003A42 !important;
+  border-color: #003A42 !important;
+  color: #FFFFFF !important;
 }
 
 /* Form Elements */
@@ -187,4 +188,29 @@ a:hover {
 .bg-opacity-90 {
   backdrop-filter: blur(5px);
   background-color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.btn-outline-primary {
+  color: #004F59 !important;
+  border-color: #004F59 !important;
+}
+
+.btn-outline-primary:hover, .btn-outline-primary:focus {
+  background-color: #004F59 !important;
+  color: #FFFFFF !important;
+}
+
+.btn-outline-light {
+  border-color: #FFFFFF !important;
+  color: #FFFFFF !important;
+  font-weight: 600;
+}
+
+.text-success {
+  color: #006622 !important;
+  font-weight: 600;
+}
+
+.bg-info-subtle {
+  background-color: #e6f5fb !important;
 }

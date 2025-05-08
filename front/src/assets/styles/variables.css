@@ -1,19 +1,19 @@
 :root {
   /* Color Palette */
-  --color-primary: #048080;      /* Turquoise clair */
-  --color-secondary: #42a4a8;    /* Bleu-vert */
-  --color-accent: #0175c5;       /* Bleu électrique */
+  --color-primary: #004F59;      /* Turquoise foncé pour accessibilité */
+  --color-secondary: #2A6D70;    /* Bleu-vert foncé */
+  --color-accent: #0165a8;       /* Bleu électrique plus foncé */
   --color-background: #ecf0f3;   /* Gris très clair */
   --color-text-dark: #484757;    /* Gris profond */
-  --color-highlight: #cf2e2e;    /* Rose vif */
+  --color-highlight: #b12929;    /* Rouge plus foncé */
 
   /* Palette étendue */
-  --primary-color: #048080;
-  --primary-color-hover: #1ebab1;
-  --secondary-color: #42a4a8;
-  --secondary-color-hover: #3a9399;
-  --accent-color: #0175c5;
-  --accent-color-hover: #0165a8;
+  --primary-color: #004F59;
+  --primary-color-hover: #003A42;
+  --secondary-color: #2A6D70;
+  --secondary-color-hover: #225558;
+  --accent-color: #0165a8;
+  --accent-color-hover: #01568e;
 
   /* Text Colors */
   --text-primary: #484757;
