@@ -1,42 +1,47 @@
 FROM php:8.2-fpm-alpine
 
-# Installation des dépendances
+# Installer les dépendances nécessaires
 RUN apk add --no-cache \
+    nginx \
+    supervisor \
     libzip-dev \
     zip \
     unzip \
-    git \
     curl \
-    nginx \
-    supervisor
+    oniguruma-dev \
+    libpng-dev \
+    libjpeg-turbo-dev \
+    freetype-dev
 
-# Extensions PHP
-RUN docker-php-ext-install pdo pdo_mysql zip
+# Configuration PHP
+RUN docker-php-ext-install pdo pdo_mysql zip mbstring exif pcntl bcmath opcache
 
-# Composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-
+# Configurer Nginx et le répertoire de travail
 WORKDIR /var/www
 
 # Copier les fichiers du projet
-COPY . /var/www
+COPY . /var/www/
 
-# Installation des dépendances
-RUN composer install --no-dev --optimize-autoloader
+# Installer Composer et les dépendances
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+RUN composer install --optimize-autoloader --no-dev
+
+# Configuration Nginx
+RUN mkdir -p /run/nginx
+COPY docker/nginx.conf /etc/nginx/http.d/default.conf
+
+# Configuration Supervisord
+COPY docker/supervisord.conf /etc/supervisor.d/supervisord.conf
 
 # Optimisation Laravel
 RUN php artisan config:cache && \
     php artisan route:cache && \
-    php artisan view:cache
+    php artisan view:cache && \
+    php artisan storage:link && \
+    chmod -R 777 /var/www/storage
 
-# Configuration Nginx
-RUN mkdir -p /etc/nginx/conf.d
-COPY docker/nginx.conf /etc/nginx/conf.d/default.conf
-
-# Configuration Supervisord
-RUN mkdir -p /etc/supervisor/conf.d
-COPY docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-
+# Exposer le port 80
 EXPOSE 80
 
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
+# Démarrer Supervisord
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor.d/supervisord.conf"]
