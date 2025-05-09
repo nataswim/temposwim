@@ -1,0 +1,11 @@
+http:
+  routers:
+    dashboard:
+      rule: "Host(`localhost`) || Host(`traefik.temposwim.com`)"
+      service: api@internal
+      entryPoints:
+        - "traefik"
+      middlewares:
+        - auth-middleware
+      tls:
+        certResolver: myresolver

@@ -1,43 +1,27 @@
-# =====================
 # Phase de build
-# =====================
-FROM node:lts-alpine AS build-stage
+FROM node:20-alpine AS build
 
-# Définir le répertoire de travail
 WORKDIR /app
 
-# Copier les fichiers de dépendances
+# Copier les fichiers de package
 COPY package*.json ./
+RUN npm ci
 
-# Installer les dépendances
-RUN npm install
+# Copier le code source
+COPY . .
 
-# Passer l'argument de mode d'environnement (par défaut : test)
-ARG MODE=test
-
-# Copier tout le projet (y compris les fichiers d'environnement)
-COPY . ./
-
-# Copier dynamiquement le fichier d'environnement selon le mode (ex: .env.prod ou .env.test)
-RUN if [ -f ".env.${MODE}" ]; then cp ".env.${MODE}" .env; else echo "No .env.${MODE} file found"; fi
-
-# Générer le build (Create React App génère un dossier "build")
+# Construction de l'application
 RUN npm run build
 
-# =====================
 # Phase de production
-# =====================
-FROM nginx:stable-alpine AS production-stage
+FROM nginx:alpine
 
-# Copier le build généré dans le répertoire public de Nginx
-# CORRECTION : Utiliser /app/build au lieu de /app/dist
-COPY --from=build-stage /app/build /usr/share/nginx/html
+# Copier les fichiers de build depuis l'étape de build
+COPY --from=build /app/build /usr/share/nginx/html
 
-# Copier la configuration personnalisée de Nginx
+# Copier la configuration Nginx
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Exposer le port 80
 EXPOSE 80
 
-# Lancer Nginx au démarrage du conteneur
 CMD ["nginx", "-g", "daemon off;"]

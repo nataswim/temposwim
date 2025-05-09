@@ -125,4 +125,13 @@ Route::get('workouts/{id}/plans', [WorkoutController::class, 'getPlans']);
         Route::post('mylist/{mylist}/items', [MylistItemController::class, 'store']);
         Route::delete('mylist/{mylist}/items/{item}', [MylistItemController::class, 'destroy']);
     });
+    // Route de santé pour les vérifications de déploiement
+Route::get('/health', function () {
+    return response()->json([
+        'status' => 'ok',
+        'version' => config('app.version', '1.0.0'),
+        'environment' => config('app.env'),
+        'timestamp' => now()->toIso8601String()
+    ]);
+});
 });

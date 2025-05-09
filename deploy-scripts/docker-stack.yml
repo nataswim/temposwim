@@ -1,0 +1,70 @@
+services:
+  laravel-app:
+    image: ghcr.io/nataswim/temposwim-api-prod:latest
+    container_name: temposwim-laravel
+    restart: always
+    ports:
+      - 8000:80
+    depends_on:
+      - mysql_db
+      - traefik
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.laravel-app.rule=Host(`api.temposwim.com`)"
+      - "traefik.http.routers.laravel-app.entrypoints=websecure"
+      - "traefik.http.routers.laravel-app.tls.certresolver=myresolver"
+
+  react-app:
+    image: ghcr.io/nataswim/temposwim-spa-prod:latest
+    container_name: temposwim-react
+    restart: always
+    ports:
+      - 3000:80
+    depends_on:
+      - laravel-app
+      - traefik
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.react-app.rule=Host(`temposwim.com`)"
+      - "traefik.http.routers.react-app.entrypoints=websecure"
+      - "traefik.http.routers.react-app.tls.certresolver=myresolver"
+
+  mysql_db:
+    image: mysql:8.0
+    container_name: temposwim-mysql
+    restart: always
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: laravel
+      MYSQL_ALLOW_EMPTY_PASSWORD: "no"
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  traefik:
+    image: traefik:v3.2
+    container_name: temposwim-traefik
+    restart: always
+    command:
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+      - "--entrypoints.web.http.redirections.entrypoint.to=websecure"
+      - "--entrypoints.web.http.redirections.entrypoint.scheme=https"
+      - "--certificatesresolvers.myresolver.acme.tlschallenge=true"
+      - "--certificatesresolvers.myresolver.acme.email=natation.swimming@gmail.com"
+      - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
+    volumes:
+      - /letsencrypt:/letsencrypt
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+
+volumes:
+  mysql_data:

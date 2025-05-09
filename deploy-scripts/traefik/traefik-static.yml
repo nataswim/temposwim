@@ -1,0 +1,25 @@
+api:
+  dashboard: true
+http:
+  middlewares:
+    auth-middleware:
+      basicAuth:
+        users:
+          - "admin:$apr1$H6uskkkW$IgXLP6ewTrSuBkTrqE8wj/"  # admin:password
+    
+    # En-têtes de sécurité
+    secHeaders:
+      headers:
+        frameDeny: true
+        sslRedirect: true
+        browserXssFilter: true
+        contentTypeNosniff: true
+        stsIncludeSubdomains: true
+        stsPreload: true
+        stsSeconds: 31536000  # 1 an
+    
+    # Rate limiting
+    rateLimit:
+      rateLimit:
+        average: 100  # Nombre moyen de requêtes par seconde
+        burst: 50     # Nombre maximal de requêtes en rafale
