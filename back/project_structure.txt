@@ -8,7 +8,7 @@
 │   │       ├── Api
 │   │       │   ├── AuthController.php
 │   │       │   ├── ExerciseController.php
-│   │       │   ├── MylistController.php
+│   │       │   ├── MyListController.php
 │   │       │   ├── MylistItemController.php
 │   │       │   ├── PageController.php
 │   │       │   ├── PlanController.php

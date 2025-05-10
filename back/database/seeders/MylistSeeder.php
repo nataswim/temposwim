@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Mylist;
+use App\Models\MyList;
 use App\Models\User;
 
 /**
@@ -35,7 +35,7 @@ class MylistSeeder extends Seeder
         foreach ($users as $user) {
             // 🇬🇧 Create a list of favorite exercises.
             // 🇫🇷 Créer une liste des exercices favoris.
-            Mylist::create([
+            MyList::create([
                 'user_id' => $user->id,
                 'title' => 'Mes exercices favoris',
                 'description' => 'Une liste de mes exercices préférés.',
@@ -43,7 +43,7 @@ class MylistSeeder extends Seeder
 
             // 🇬🇧 Create a list of favorite workouts.
             // 🇫🇷 Créer une liste des séances d'entraînement favorites.
-            Mylist::create([
+            MyList::create([
                 'user_id' => $user->id,
                 'title' => 'Mes séances favorites',
                 'description' => 'Une liste de mes séances préférées.',
@@ -51,7 +51,7 @@ class MylistSeeder extends Seeder
 
             // 🇬🇧 Create a list of favorite plans.
             // 🇫🇷 Créer une liste des plans d'entraînement favoris.
-            Mylist::create([
+            MyList::create([
                 'user_id' => $user->id,
                 'title' => 'Mes plans favoris',
                 'description' => 'Une liste de mes plans préférés.',

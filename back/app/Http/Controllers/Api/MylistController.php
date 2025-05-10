@@ -7,7 +7,7 @@ use App\Models\Mylist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class MylistController extends Controller
+class MyListController extends Controller
 {
     /**
      * 🇬🇧 Display a listing of the resource.

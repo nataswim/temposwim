@@ -12,7 +12,7 @@ use App\Http\Controllers\Api\ExerciseController;
 use App\Http\Controllers\Api\PlanController;
 use App\Http\Controllers\Api\WorkoutController;
 use App\Http\Controllers\Api\WorkoutExerciseController;
-use App\Http\Controllers\Api\MylistController;
+use App\Http\Controllers\Api\MyListController;
 use App\Http\Controllers\Api\SwimSetController;
 use App\Http\Controllers\Api\MylistItemController;
 use App\Http\Controllers\Api\PlanWorkoutController;
@@ -119,8 +119,8 @@ Route::get('workouts/{id}/plans', [WorkoutController::class, 'getPlans']);
         // 🇬🇧 Routes for Personal Lists (Listes personnelles)
         // 🇫🇷 Routes pour les listes personnelles (Mylists)
         // ************************************************************************
-        Route::apiResource('mylists', MylistController::class);
-        Route::post('mylists/{mylist}/duplicate', [MylistController::class, 'duplicate']); // Nouvelle route pour la duplication
+        Route::apiResource('mylists', MyListController::class);
+        Route::post('mylists/{mylist}/duplicate', [MyListController::class, 'duplicate']); // Nouvelle route pour la duplication
         Route::get('mylist/{mylist}/items', [MylistItemController::class, 'index']);
         Route::post('mylist/{mylist}/items', [MylistItemController::class, 'store']);
         Route::delete('mylist/{mylist}/items/{item}', [MylistItemController::class, 'destroy']);

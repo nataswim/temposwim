@@ -4,8 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Mylist;
-use App\Models\MylistItem;
+use App\Models\MyList;
+use App\Models\MyListItem;
 use App\Models\Exercise;
 use App\Models\Workout;
 use App\Models\Plan;
@@ -24,7 +24,7 @@ class MylistItemSeeder extends Seeder
     {
         // 🇬🇧 Retrieve existing personal lists, exercises, workouts, and plans.
         // 🇫🇷 Récupérer les listes personnelles, exercices, séances d'entraînement et plans existants.
-        $mylists = Mylist::all();
+        $mylists = MyList::all();
         $exercises = Exercise::all();
         $workouts = Workout::all();
         $plans = Plan::all();
