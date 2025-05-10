@@ -15,8 +15,8 @@ use Illuminate\Support\Facades\Log;
 class MylistItemController extends Controller
 {
     /**
-     * 🇬🇧 Display a listing of the items for a given mylist.
-     * 🇫🇷 Afficher la liste des éléments d'une liste personnelle donnée.
+     * Display a listing of the items for a given mylist.
+     * Afficher la liste des éléments d'une liste personnelle donnée.
      */
     public function index(Mylist $mylist)
     {

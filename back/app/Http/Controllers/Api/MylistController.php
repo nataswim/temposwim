@@ -10,8 +10,8 @@ use Illuminate\Support\Facades\Validator;
 class MyListController extends Controller
 {
     /**
-     * 🇬🇧 Display a listing of the resource.
-     * 🇫🇷 Afficher la liste des listes personnelles.
+     * Display a listing of the resource.
+     * Afficher la liste des listes personnelles.
      */
     public function index(Request $request)
     {
